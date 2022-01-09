@@ -58,6 +58,7 @@ angular.module("app", []).controller("controller", [
     this.plotMouseclick = function (e, obj) {
       obj.x = this.ui.plot.x;
       obj.y = this.ui.plot.y;
+      this.ui.plot.x = this.ui.plot.y = null;
     };
   },
 ]);
