@@ -1,1 +1,148 @@
-hello :>
+<head>
+    <title>Genderkoekje</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="app">
+
+    <div ng-controller="controller as ctrl">
+        <!-- <p>Value: <span ng-bind="ctrl.value"></span></p>
+
+        <button type="button" ng-click="ctrl.increment(1)">Increment</button>
+        <button type="button" ng-click="ctrl.increment(-1)">Decrement</button> -->
+
+        <!-- <div>
+            <img src="assets/figure.png">
+        </div> -->
+
+        <div ng-switch="ctrl.view">
+
+            <div ng-switch-when="welcome">
+                <h1>Welkom!</h1>
+
+                <button ng-click="ctrl.view = 'name'">Start</button>
+            </div>
+
+            <div ng-switch-when="name">
+                <h1>Naam en voornaamwoorden</h1>
+
+                <button ng-click="ctrl.view = 'identity'">Volgende</button>
+            </div>
+
+            <div ng-switch-when="identity">
+                <h1>Identiteit</h1>
+
+                <div class="plot-container">
+                    <div class="plot">
+                        <div class="pointer-events-none">
+                            <div class="axes border-radius-circle">
+                                <div class="vertical"></div>
+                                <div class="horizontal"></div>
+                            </div>
+                            <div class="labels labels-sides">
+                                <div class="left">Man</div>
+                                <div class="right">Vrouw</div>
+                                <div class="top">Feminien</div>
+                                <div class="bottom">Masculien</div>
+                            </div>
+                            <div class="selection-axes border-radius-circle"
+                                ng-if="ctrl.ui.plot.x != null && ctrl.ui.plot.y != null">
+                                <div class="vertical" ng-style="{'width': ctrl.ui.plot.x + '%'}"></div>
+                                <div class="horizontal" ng-style="{'height': ctrl.ui.plot.y + '%'}"></div>
+                            </div>
+                            <div class="dot" ng-if="ctrl.profile.identity.x != null && ctrl.profile.identity.y != null"
+                                ng-style="{'top': ctrl.profile.identity.y + '%', 'left': ctrl.profile.identity.x + '%'}">
+                            </div>
+                        </div>
+                        <div class="pointer-events border-radius-circle" ng-mousemove="ctrl.plotMouseover($event)"
+                            ng-mouseleave="ctrl.plotMouseleave($event)"
+                            ng-click="ctrl.plotMouseclick($event, ctrl.profile.identity)"></div>
+                    </div>
+                </div>
+
+                <button ng-click="ctrl.view = 'expression'">Volgende</button>
+            </div>
+
+            <div ng-switch-when="expression">
+                <h1>Expressie</h1>
+
+                <div class="clothing">
+                    <div class="shapes">
+                        <div class="top-left"></div>
+                        <div class="top-right"></div>
+                        <div class="bottom-left"></div>
+                        <div class="bottom-right"></div>
+                    </div>
+                    <div class="choices">
+                        <img ng-repeat="clothingItem in ctrl.clothingItems" class="choice"
+                            ng-class="{'selected': ctrl.profile.expression.has(clothingItem)}"
+                            src="assets/clothing-item-{{clothingItem}}.png"
+                            ng-click="ctrl.profile.expression.has(clothingItem) ? ctrl.profile.expression.delete(clothingItem) : ctrl.profile.expression.add(clothingItem)">
+                    </div>
+                </div>
+
+                <button ng-click="ctrl.view = 'sexuality'">Volgende</button>
+            </div>
+
+            <div ng-switch-when="sexuality">
+                <h1>Seksualiteit en romantiek</h1>
+
+
+                <div class="plot-container">
+                    <div class="plot">
+                        <div class="pointer-events-none">
+                            <div class="axes">
+                                <div class="box border-radius-soft"></div>
+                            </div>
+                            <div class="labels">
+                                <div class="top-left">Mannen</div>
+                                <div class="top-right">Alles</div>
+                                <div class="bottom-left">Niets</div>
+                                <div class="bottom-right">Vrouwen</div>
+                            </div>
+                            <div class="selection-axes border-radius-soft"
+                                ng-if="ctrl.ui.plot.x != null && ctrl.ui.plot.y != null">
+                                <div class="vertical" ng-style="{'width': ctrl.ui.plot.x + '%'}"></div>
+                                <div class="horizontal" ng-style="{'height': ctrl.ui.plot.y + '%'}"></div>
+                            </div>
+                            <div class="dot"
+                                ng-if="ctrl.profile.sexuality.x != null && ctrl.profile.sexuality.y != null"
+                                ng-style="{'top': ctrl.profile.sexuality.y + '%', 'left': ctrl.profile.sexuality.x + '%'}">
+                            </div>
+                        </div>
+                        <div class="pointer-events border-radius-soft" ng-mousemove="ctrl.plotMouseover($event)"
+                            ng-mouseleave="ctrl.plotMouseleave($event)"
+                            ng-click="ctrl.plotMouseclick($event, ctrl.profile.sexuality)"></div>
+                    </div>
+                </div>
+
+                <button ng-click="ctrl.view = 'biological'">Volgende</button>
+            </div>
+
+            <div ng-switch-when="biological">
+                <h1>Biologisch</h1>
+
+
+                <button ng-click="ctrl.view = 'result'">Volgende</button>
+            </div>
+
+            <div ng-switch-when="result">
+                <h1>Resultaat</h1>
+
+                <div>Clothing items: {{ctrl.Array.from(ctrl.profile.expression)}}</div>
+
+                <div>Profile: {{ctrl.profile}}</div>
+
+                <button ng-click="ctrl.view = 'welcome'">Opnieuw</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="libs/angular.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
