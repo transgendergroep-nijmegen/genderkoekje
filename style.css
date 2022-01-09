@@ -207,3 +207,14 @@ h1 {
   transform: translateX(-50%) translateY(-50%);
   transition: all 0.2s ease;
 }
+
+.plot .center {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  background: #d45500;
+  width: 0.5%;
+  height: 0.5%;
+  border-radius: 100%;
+  transform: translateX(-50%) translateY(-50%);
+}
