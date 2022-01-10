@@ -7,7 +7,7 @@ h1 {
   color: white;
 }
 
-.clothing {
+.circular-container {
   width: fit-content;
   position: relative;
   width: 300px;
@@ -16,27 +16,27 @@ h1 {
   border-radius: 50%;
 }
 
-.clothing .shapes div {
+.circular-container .shapes div {
   width: 50%;
   height: 50%;
 }
 
-.clothing .shapes .top-left {
+.circular-container .shapes .top-left {
   float: left;
   shape-outside: polygon(0 0, 100% 0, 23% 23%, 0 100%);
 }
 
-.clothing .shapes .top-right {
+.circular-container .shapes .top-right {
   float: right;
   shape-outside: polygon(100% 0, 100% 100%, 77% 23%, 0 0);
 }
 
-.clothing .shapes .bottom-left {
+.circular-container .shapes .bottom-left {
   float: left;
   shape-outside: polygon(0 100%, 0 0, 23% 77%, 100% 100%);
 }
 
-.clothing .shapes .bottom-right {
+.circular-container .shapes .bottom-right {
   float: right;
   shape-outside: polygon(100% 100%, 0 100%, 77% 77%, 100% 0);
 }
@@ -63,6 +63,38 @@ h1 {
   filter: grayscale(0) drop-shadow(2px 2px 1px #ff7f2a)
     drop-shadow(-2px -2px 1px #ff7f2a) drop-shadow(2px -2px 1px #ff7f2a)
     drop-shadow(-2px 2px 1px #ff7f2a);
+}
+
+.physical .choices {
+  text-align: center;
+  padding: 30px;
+}
+
+.physical .choice-group {
+  display: block;
+  margin: 5%;
+}
+
+.physical .choice {
+  font-family: sans-serif;
+  border: 3px solid #ff7f2a;
+  border-radius: 20px;
+  background: white;
+  color: #ff7f2a;
+  font-weight: bold;
+  display: inline-block;
+  padding: 10px;
+  margin: 2px;
+  transition: all 0.2s ease;
+  filter: grayscale(1) drop-shadow(1px 1px 1px transparent)
+    drop-shadow(-1px -1px 1px transparent) drop-shadow(1px -1px 1px transparent)
+    drop-shadow(-1px 1px 1px transparent);
+}
+
+.physical .selected {
+  filter: grayscale(0) drop-shadow(1px 1px 1px #ff7f2a)
+    drop-shadow(-1px -1px 1px #ff7f2a) drop-shadow(1px -1px 1px #ff7f2a)
+    drop-shadow(-1px 1px 1px #ff7f2a);
 }
 
 .plot-container {
@@ -216,8 +248,9 @@ h1 {
   left: 50%;
   position: absolute;
   background: #d45500;
-  width: 0.5%;
-  height: 0.5%;
+  width: 1%;
+  height: 1%;
+  opacity: 75%;
   border-radius: 100%;
   transform: translateX(-50%) translateY(-50%);
 }

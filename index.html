@@ -66,18 +66,20 @@
             <div ng-switch-when="expression">
                 <h1>Expressie</h1>
 
-                <div class="clothing">
+                <div class="circular-container">
                     <div class="shapes">
                         <div class="top-left"></div>
                         <div class="top-right"></div>
                         <div class="bottom-left"></div>
                         <div class="bottom-right"></div>
                     </div>
-                    <div class="choices">
-                        <img ng-repeat="clothingItem in ctrl.clothingItems" class="choice"
-                            ng-class="{'selected': ctrl.profile.expression.has(clothingItem)}"
-                            src="assets/clothing-item-{{clothingItem}}.png"
-                            ng-click="ctrl.profile.expression.has(clothingItem) ? ctrl.profile.expression.delete(clothingItem) : ctrl.profile.expression.add(clothingItem)">
+                    <div class="clothing">
+                        <div class="choices">
+                            <img ng-repeat="clothingItem in ctrl.clothingItems" class="choice"
+                                ng-class="{'selected': ctrl.profile.expression.has(clothingItem)}"
+                                src="assets/clothing-item-{{clothingItem}}.png"
+                                ng-click="ctrl.profile.expression.has(clothingItem) ? ctrl.profile.expression.delete(clothingItem) : ctrl.profile.expression.add(clothingItem)">
+                        </div>
                     </div>
                 </div>
 
@@ -118,12 +120,31 @@
                     </div>
                 </div>
 
-                <button ng-click="ctrl.view = 'biological'">Volgende</button>
+                <button ng-click="ctrl.view = 'physical'">Volgende</button>
             </div>
 
-            <div ng-switch-when="biological">
-                <h1>Biologisch</h1>
+            <div ng-switch-when="physical">
+                <h1>Fysiek</h1>
 
+                <div class="circular-container">
+                    <div class="shapes">
+                        <div class="top-left"></div>
+                        <div class="top-right"></div>
+                        <div class="bottom-left"></div>
+                        <div class="bottom-right"></div>
+                    </div>
+                    <div class="physical">
+                        <div class="choices">
+                            <div ng-repeat="physicalItemGroup in ctrl.physicalItemGroups" class="choice-group">
+                                <div ng-repeat="physicalItem in physicalItemGroup" class="choice"
+                                    ng-class="{'selected': ctrl.profile.physical.has(physicalItem)}"
+                                    ng-click="ctrl.profile.physical.has(physicalItem) ? ctrl.profile.physical.delete(physicalItem) : ctrl.profile.physical.add(physicalItem)">
+                                    {{physicalItem}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <button ng-click="ctrl.view = 'result'">Volgende</button>
             </div>
@@ -133,7 +154,9 @@
 
                 <div>Clothing items: {{ctrl.Array.from(ctrl.profile.expression)}}</div>
 
-                <div>Profile: {{ctrl.profile}}</div>
+                <div>Physical items: {{ctrl.Array.from(ctrl.profile.physical)}}</div>
+
+                <div>Rest profile: {{ctrl.profile}}</div>
 
                 <button ng-click="ctrl.view = 'welcome'">Opnieuw</button>
             </div>

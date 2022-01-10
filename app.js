@@ -29,12 +29,27 @@ angular.module("app", []).controller("controller", [
       "12",
     ];
 
+    this.physicalItemGroups = [
+      // ["borsten", "vagina", "baarmoeder/eierstokken"],
+      // ["penis/scrotum", "testikels"],
+      [
+        "borsten",
+        "vagina",
+        "baarmoeder/eierstokken",
+        "penis/scrotum",
+        "testikels",
+      ],
+    ];
+
     shuffleArray(this.clothingItems);
+    this.physicalItemGroups.map(shuffleArray);
+    shuffleArray(this.physicalItemGroups);
 
     this.profile = {
       identity: {},
       sexuality: {},
       expression: new Set(),
+      physical: new Set(),
     };
 
     this.ui = {
