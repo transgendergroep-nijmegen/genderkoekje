@@ -20,11 +20,40 @@
             <div ng-switch-when="welcome">
                 <h1>Welkom!</h1>
 
-                <button ng-click="ctrl.view = 'name'">Start</button>
+                <button ng-click="ctrl.view = 'names'">Start</button>
             </div>
 
-            <div ng-switch-when="name">
+            <div ng-switch-when="names">
                 <h1>Naam en voornaamwoorden</h1>
+
+                <div class="circular-container">
+                    <div class="shapes">
+                        <div class="top-left"></div>
+                        <div class="top-right"></div>
+                        <div class="bottom-left"></div>
+                        <div class="bottom-right"></div>
+                    </div>
+                    <div class="name">
+                        <div class="field">
+                            <input class="name-field" ng-class="{'filled': ctrl.profile.name}"
+                                ng-model="ctrl.profile.name" placeholder="Anoniem">
+                        </div>
+                    </div>
+                    <div class="pronouns">
+                        <div class="text-choices">
+                            <div ng-repeat="pronoun in ctrl.pronouns" class="choice"
+                                ng-class="{'selected': ctrl.profile.pronouns.has(pronoun)}"
+                                ng-click="ctrl.profile.pronouns.has(pronoun) ? ctrl.profile.pronouns.delete(pronoun) : ctrl.profile.pronouns.add(pronoun)">
+                                {{pronoun}}
+                            </div>
+                            <div class="choice clear" ng-init="otherPronouns = 'andere'"
+                                ng-class="{'selected': ctrl.profile.pronouns.has(otherPronouns)}"
+                                ng-click="ctrl.profile.pronouns.has(otherPronouns) ? ctrl.profile.pronouns.delete(otherPronouns) : ctrl.profile.pronouns.add(otherPronouns)">
+                                andere
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <button ng-click="ctrl.view = 'identity'">Volgende</button>
             </div>
@@ -74,10 +103,10 @@
                         <div class="bottom-right"></div>
                     </div>
                     <div class="clothing">
-                        <div class="choices">
+                        <div class="image-choices">
                             <img ng-repeat="clothingItem in ctrl.clothingItems" class="choice"
                                 ng-class="{'selected': ctrl.profile.expression.has(clothingItem)}"
-                                src="assets/clothing-item-{{clothingItem}}.png"
+                                src="assets/clothing-item-{{clothingItem}}.png" draggable="false"
                                 ng-click="ctrl.profile.expression.has(clothingItem) ? ctrl.profile.expression.delete(clothingItem) : ctrl.profile.expression.add(clothingItem)">
                         </div>
                     </div>
@@ -134,7 +163,7 @@
                         <div class="bottom-right"></div>
                     </div>
                     <div class="physical">
-                        <div class="choices">
+                        <div class="text-choices">
                             <div ng-repeat="physicalItemGroup in ctrl.physicalItemGroups" class="choice-group">
                                 <div ng-repeat="physicalItem in physicalItemGroup" class="choice"
                                     ng-class="{'selected': ctrl.profile.physical.has(physicalItem)}"
@@ -151,6 +180,8 @@
 
             <div ng-switch-when="result">
                 <h1>Resultaat</h1>
+
+                <div>Pronouns: {{ctrl.Array.from(ctrl.profile.pronouns)}}</div>
 
                 <div>Clothing items: {{ctrl.Array.from(ctrl.profile.expression)}}</div>
 

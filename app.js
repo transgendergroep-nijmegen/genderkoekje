@@ -14,6 +14,9 @@ angular.module("app", []).controller("controller", [
     //   this.value += by;
     //   console.log("incremented by " + by + ", new value " + this.value);
     // };
+
+    this.pronouns = ["hij/zijn", "zij/haar", "die/diens", "hen/hun"];
+
     this.clothingItems = [
       "01",
       "02",
@@ -41,11 +44,14 @@ angular.module("app", []).controller("controller", [
       ],
     ];
 
+    shuffleArray(this.pronouns);
     shuffleArray(this.clothingItems);
     this.physicalItemGroups.map(shuffleArray);
     shuffleArray(this.physicalItemGroups);
 
     this.profile = {
+      name: null,
+      pronouns: new Set(),
       identity: {},
       sexuality: {},
       expression: new Set(),

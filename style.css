@@ -14,6 +14,7 @@ h1 {
   height: 300px;
   background: white;
   border-radius: 50%;
+  user-select: none;
 }
 
 .circular-container .shapes div {
@@ -41,12 +42,72 @@ h1 {
   shape-outside: polygon(100% 100%, 0 100%, 77% 77%, 100% 0);
 }
 
-.clothing .choices {
+.field input {
+  width: 70%;
+  text-align: center;
+  font-family: sans-serif;
+  border: 3px solid #ff7f2a;
+  border-radius: 20px;
+  background: white;
+  color: #ff7f2a;
+  font-weight: bold;
+  font-size: 1em;
+  display: inline-block;
+  padding: 3%;
+  margin: 4%;
+  transition: all 0.2s ease;
+  filter: grayscale(1);
+}
+
+.field input:focus {
+  outline: none;
+  border-radius: 0;
+}
+
+.field .filled {
+  filter: grayscale(0);
+  background: #ffeadc;
+}
+
+.text-choices {
+  text-align: center;
+  padding: 5%;
+}
+
+.text-choices .choice-group {
+  display: block;
+  margin: 5%;
+}
+
+.text-choices .choice {
+  font-family: sans-serif;
+  border: 3px solid #ff7f2a;
+  border-radius: 20px;
+  background: white;
+  color: #ff7f2a;
+  font-weight: bold;
+  display: inline-block;
+  padding: 10px;
+  margin: 2px;
+  transition: all 0.2s ease;
+  filter: grayscale(1);
+}
+
+.text-choices .selected {
+  filter: grayscale(0);
+  background: #ffeadc;
+}
+
+.text-choices .clear {
+  clear: both;
+}
+
+.image-choices {
   text-align: center;
   padding: 30px;
 }
 
-.clothing .choice {
+.image-choices .choice {
   display: inline;
   padding: 6px;
   max-height: 50px;
@@ -59,42 +120,10 @@ h1 {
     drop-shadow(-2px 2px 1px transparent);
 }
 
-.clothing .selected {
+.image-choices .selected {
   filter: grayscale(0) drop-shadow(2px 2px 1px #ff7f2a)
     drop-shadow(-2px -2px 1px #ff7f2a) drop-shadow(2px -2px 1px #ff7f2a)
     drop-shadow(-2px 2px 1px #ff7f2a);
-}
-
-.physical .choices {
-  text-align: center;
-  padding: 30px;
-}
-
-.physical .choice-group {
-  display: block;
-  margin: 5%;
-}
-
-.physical .choice {
-  font-family: sans-serif;
-  border: 3px solid #ff7f2a;
-  border-radius: 20px;
-  background: white;
-  color: #ff7f2a;
-  font-weight: bold;
-  display: inline-block;
-  padding: 10px;
-  margin: 2px;
-  transition: all 0.2s ease;
-  filter: grayscale(1) drop-shadow(1px 1px 1px transparent)
-    drop-shadow(-1px -1px 1px transparent) drop-shadow(1px -1px 1px transparent)
-    drop-shadow(-1px 1px 1px transparent);
-}
-
-.physical .selected {
-  filter: grayscale(0) drop-shadow(1px 1px 1px #ff7f2a)
-    drop-shadow(-1px -1px 1px #ff7f2a) drop-shadow(1px -1px 1px #ff7f2a)
-    drop-shadow(-1px 1px 1px #ff7f2a);
 }
 
 .plot-container {
