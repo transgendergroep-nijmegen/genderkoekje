@@ -124,10 +124,14 @@ angular
           document.querySelector(attrs.sameDimensionsAsId)
         );
 
-        angular.element($window).on("resize", function () {
+        let f = function () {
           elm.css("width", element.prop("offsetWidth"));
           elm.css("height", element.prop("offsetHeight"));
-        });
+        };
+
+        f();
+
+        angular.element($window).on("resize", f);
 
         // scope.$watch(
         //   function () {
