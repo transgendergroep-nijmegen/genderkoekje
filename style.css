@@ -1,55 +1,220 @@
+:root {
+  --color-lightest: white;
+  --color-light: #ffeadc;
+  --color-base: #ff7f2a;
+  --color-dark: #d45500;
+  --color-darkest: #c44e00;
+  --color-tinted: #be5a5a;
+  --widget-size-open: 300px;
+  --widget-size-open-half: calc(var(--widget-size-open) / 2);
+  --names-widget-top: 17%;
+  --names-widget-left: 80%;
+  --identity-widget-top: 5%;
+  --identity-widget-left: 50%;
+  --expression-widget-top: 40%;
+  --expression-widget-left: 11%;
+  --sexuality-widget-top: 47%;
+  --sexuality-widget-left: 62%;
+  --physical-widget-top: 80%;
+  --physical-widget-left: 50%;
+}
+
 body {
-  background: #ff7f2a;
+  background: var(--color-light);
   margin: 0;
+  font-family: sans-serif;
 }
 
 h1 {
-  color: white;
+  color: var(--color-lightest);
+}
+
+.figure {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.figure .image {
+  margin: 2%;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+}
+
+.figure .image .img {
+  transition: all 0.2s ease;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.dimmed {
+  opacity: 0.8;
+}
+
+.outside-clicker {
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.outside-clicker-active {
+  pointer-events: all;
+  backdrop-filter: blur(2px);
+}
+
+.widgets {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.widget {
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  filter: drop-shadow(0 0 10px var(--color-tinted));
+  transition: all 0.2s ease;
+}
+
+.widget-scale {
+  transition: all 0.2s ease;
+  transform: scale(1);
+}
+
+.widget-small {
+  transform: scale(0.2);
+}
+
+.pulsate {
+  animation-duration: 1s;
+  animation-name: pulsate;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.pulsate:hover {
+  animation-name: none;
+}
+
+@keyframes pulsate {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.25);
+  }
+}
+
+.animation-pause {
+  animation-play-state: paused;
+}
+
+.widget-small:hover {
+  transform: scale(0.3);
+}
+
+.widget-top {
+  z-index: 1;
+}
+
+.widget-bottom {
+  pointer-events: none;
+}
+
+.widget-icon {
+  width: 100%;
+  height: 100%;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.names-widget-icon {
+  background-image: url("assets/icon-names.png");
+}
+
+.identity-widget-icon {
+  background-image: url("assets/icon-identity.png");
+}
+
+.expression-widget-icon {
+  background-image: url("assets/icon-expression.png");
+}
+
+.sexuality-widget-icon {
+  background-image: url("assets/icon-sexuality.png");
+}
+
+.physical-widget-icon {
+  background-image: url("assets/icon-physical.png");
 }
 
 .circular-container {
+  pointer-events: all;
   width: fit-content;
   position: relative;
-  width: 300px;
-  height: 300px;
-  background: white;
+  width: var(--widget-size-open);
+  height: var(--widget-size-open);
+  background: var(--color-lightest);
   border-radius: 50%;
   user-select: none;
+  overflow: hidden;
+  border: 5px solid var(--color-base);
 }
 
-.circular-container .shapes div {
+.shapes-container {
+  width: 100%;
+  height: 100%;
+}
+
+.circular-container .shapes-container .shapes div {
   width: 50%;
   height: 50%;
 }
 
-.circular-container .shapes .top-left {
+.circular-container .shapes-container .shapes .top-left {
   float: left;
-  shape-outside: polygon(0 0, 100% 0, 23% 23%, 0 100%);
+  shape-outside: polygon(0 0, 100% 0, 25% 25%, 0 100%);
 }
 
-.circular-container .shapes .top-right {
+.circular-container .shapes-container .shapes .top-right {
   float: right;
-  shape-outside: polygon(100% 0, 100% 100%, 77% 23%, 0 0);
+  shape-outside: polygon(100% 0, 100% 100%, 75% 25%, 0 0);
 }
 
-.circular-container .shapes .bottom-left {
+.circular-container .shapes-container .shapes .bottom-left {
   float: left;
-  shape-outside: polygon(0 100%, 0 0, 23% 77%, 100% 100%);
+  shape-outside: polygon(0 100%, 0 0, 25% 75%, 100% 100%);
 }
 
-.circular-container .shapes .bottom-right {
+.circular-container .shapes-container .shapes .bottom-right {
   float: right;
-  shape-outside: polygon(100% 100%, 0 100%, 77% 77%, 100% 0);
+  shape-outside: polygon(100% 100%, 0 100%, 75% 75%, 100% 0);
+}
+
+.name {
+  text-align: center;
+  border-bottom: 3px solid var(--color-base);
 }
 
 .field input {
   width: 70%;
   text-align: center;
-  font-family: sans-serif;
-  border: 3px solid #ff7f2a;
+  border: 3px solid var(--color-base);
   border-radius: 20px;
-  background: white;
-  color: #ff7f2a;
+  background: var(--color-lightest);
+  color: var(--color-base);
   font-weight: bold;
   font-size: 1em;
   display: inline-block;
@@ -66,7 +231,7 @@ h1 {
 
 .field .filled {
   filter: grayscale(0);
-  background: #ffeadc;
+  background: var(--color-light);
 }
 
 .text-choices {
@@ -80,22 +245,25 @@ h1 {
 }
 
 .text-choices .choice {
-  font-family: sans-serif;
-  border: 3px solid #ff7f2a;
+  border: 3px solid var(--color-base);
   border-radius: 20px;
-  background: white;
-  color: #ff7f2a;
+  background: var(--color-lightest);
+  color: var(--color-base);
   font-weight: bold;
   display: inline-block;
-  padding: 10px;
-  margin: 2px;
+  padding: 3%;
+  margin: 1%;
   transition: all 0.2s ease;
   filter: grayscale(1);
 }
 
+.text-choices .choice:hover {
+  border: 3px solid var(--color-darkest);
+}
+
 .text-choices .selected {
   filter: grayscale(0);
-  background: #ffeadc;
+  background: var(--color-light);
 }
 
 .text-choices .clear {
@@ -104,12 +272,11 @@ h1 {
 
 .image-choices {
   text-align: center;
-  padding: 30px;
 }
 
 .image-choices .choice {
   display: inline;
-  padding: 6px;
+  padding: 2%;
   max-height: 50px;
   max-width: 50px;
   height: auto;
@@ -121,31 +288,47 @@ h1 {
 }
 
 .image-choices .selected {
-  filter: grayscale(0) drop-shadow(2px 2px 1px #ff7f2a)
-    drop-shadow(-2px -2px 1px #ff7f2a) drop-shadow(2px -2px 1px #ff7f2a)
-    drop-shadow(-2px 2px 1px #ff7f2a);
+  filter: grayscale(0) drop-shadow(2px 2px 1px var(--color-base))
+    drop-shadow(-2px -2px 1px var(--color-base))
+    drop-shadow(2px -2px 1px var(--color-base))
+    drop-shadow(-2px 2px 1px var(--color-base));
 }
 
-.plot-container {
-  background: white;
-  padding: 30px;
-  width: fit-content;
-  border-radius: 100%;
-  overflow: hidden;
-}
-
-.plot {
-  width: 300px;
-  height: 300px;
-  background: white;
-  position: relative;
-}
-
-.plot .pointer-events-none {
+.pointer-events-none {
   pointer-events: none;
 }
 
+.border-radius-circle {
+  border-radius: 100%;
+}
+
+.border-radius-soft {
+  border-radius: 40%;
+}
+
+.plot-container {
+  background: var(--color-lightest);
+  border-radius: 100%;
+  overflow: hidden;
+  width: var(--widget-size-open);
+  height: var(--widget-size-open);
+  position: relative;
+}
+
+.plot {
+  --plot-padding: 7%;
+  padding: var(--plot-padding);
+  background: var(--color-lightest);
+}
+
+.plot .graph {
+  width: 100%;
+  height: calc(100% - var(--plot-padding) - var(--plot-padding));
+  position: relative;
+}
+
 .plot .pointer-events {
+  pointer-events: all;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -154,23 +337,25 @@ h1 {
 
 .plot .axes .vertical {
   position: absolute;
+  box-sizing: border-box;
   width: 50%;
   height: 100%;
-  border-right: 1px dashed #d45500;
+  border-right: 1px dashed var(--color-dark);
 }
 
 .plot .axes .horizontal {
   position: absolute;
+  box-sizing: border-box;
   width: 100%;
   height: 50%;
-  border-bottom: 1px dashed #d45500;
+  border-bottom: 1px dashed var(--color-dark);
 }
 
 .plot .axes .box {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px dashed #d45500;
+  border: 1px dashed var(--color-dark);
 }
 
 .plot .selection-axes {
@@ -180,47 +365,38 @@ h1 {
   overflow: hidden;
 }
 
-.plot .border-radius-circle {
-  border-radius: 100%;
-}
-
-.plot .border-radius-soft {
-  border-radius: 40%;
-}
-
 .plot .selection-axes .vertical {
   position: absolute;
   height: 100%;
-  border-right: 1px dotted #ff7f2a;
+  border-right: 1px dotted var(--color-base);
 }
 
 .plot .selection-axes .horizontal {
   position: absolute;
   width: 100%;
-  border-bottom: 1px dotted #ff7f2a;
+  border-bottom: 1px dotted var(--color-base);
 }
 
 .plot .labels div {
-  font-family: sans-serif;
-  color: #d45500;
+  color: var(--color-dark);
   position: absolute;
 }
 
 .plot .labels-sides div {
-  background: white;
+  background: var(--color-lightest);
 }
 
 .plot .labels .left {
   top: 50%;
   transform: translateY(-50%);
-  padding-right: 2px;
+  padding-right: 1%;
 }
 
 .plot .labels .right {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  padding-left: 2px;
+  padding-left: 1%;
 }
 
 .plot .labels .top {
@@ -236,35 +412,36 @@ h1 {
 
 .plot .labels-corners div {
   text-align: center;
+  --labels-distance: 16%;
 }
 
 .plot .labels .top-left {
   transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-  top: 15%;
-  left: 15%;
+  top: var(--labels-distance);
+  left: var(--labels-distance);
 }
 
 .plot .labels .top-right {
   transform: translateX(35%) translateY(-35%) rotate(45deg);
-  top: 15%;
-  right: 15%;
+  top: var(--labels-distance);
+  right: var(--labels-distance);
 }
 
 .plot .labels .bottom-left {
   transform: translateX(-35%) translateY(35%) rotate(45deg);
-  bottom: 15%;
-  left: 15%;
+  bottom: var(--labels-distance);
+  left: var(--labels-distance);
 }
 
 .plot .labels .bottom-right {
   transform: translateX(50%) translateY(50%) rotate(-45deg);
-  bottom: 15%;
-  right: 15%;
+  bottom: var(--labels-distance);
+  right: var(--labels-distance);
 }
 
 .plot .dot {
   position: absolute;
-  background: #d45500;
+  background: var(--color-dark);
   width: 3%;
   height: 3%;
   border-radius: 100%;
@@ -276,10 +453,99 @@ h1 {
   top: 50%;
   left: 50%;
   position: absolute;
-  background: #d45500;
+  background: var(--color-dark);
   width: 1%;
   height: 1%;
   opacity: 75%;
   border-radius: 100%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.names-widget-location {
+  top: var(--names-widget-top);
+  left: var(--names-widget-left);
+}
+
+.names-widget-location-open {
+  top: min(
+    max(var(--names-widget-top), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+  left: min(
+    max(var(--names-widget-left), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+}
+
+.identity-widget-location {
+  top: var(--identity-widget-top);
+  left: var(--identity-widget-left);
+}
+
+.identity-widget-location-open {
+  top: min(
+    max(var(--identity-widget-top), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+  left: min(
+    max(var(--identity-widget-left), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+}
+
+.expression-widget-location {
+  top: var(--expression-widget-top);
+  left: var(--expression-widget-left);
+}
+
+.expression-widget-location-open {
+  top: min(
+    max(var(--expression-widget-top), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+  left: min(
+    max(var(--expression-widget-left), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+}
+
+.sexuality-widget-location {
+  top: var(--sexuality-widget-top);
+  left: var(--sexuality-widget-left);
+}
+
+.sexuality-widget-location-open {
+  top: min(
+    max(var(--sexuality-widget-top), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+  left: min(
+    max(var(--sexuality-widget-left), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+}
+
+.physical-widget-location {
+  top: var(--physical-widget-top);
+  left: var(--physical-widget-left);
+}
+
+.physical-widget-location-open {
+  top: min(
+    max(var(--physical-widget-top), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+  left: min(
+    max(var(--physical-widget-left), var(--widget-size-open-half)),
+    calc(100% - var(--widget-size-open-half))
+  );
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
 }
