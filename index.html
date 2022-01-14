@@ -135,7 +135,7 @@
                                             <div class="image-choices">
                                                 <img ng-repeat="clothingItem in ctrl.clothingItems" class="choice"
                                                     ng-class="{'selected': ctrl.profile.expression.has(clothingItem)}"
-                                                    src="assets/clothing-item-{{clothingItem}}.png" draggable="false"
+                                                    ng-src="assets/clothing-item-{{clothingItem}}.png" draggable="false"
                                                     ng-click="ctrl.profile.expression.has(clothingItem) ? ctrl.profile.expression.delete(clothingItem) : ctrl.profile.expression.add(clothingItem)">
                                             </div>
                                         </div>
