@@ -80,7 +80,7 @@ angular
       };
     },
   ])
-  .directive("dynamicPaddingCentering", function () {
+  .directive("dynamicPaddingCentering", function ($window) {
     return {
       restrict: "A",
       link: function (scope, elm, attrs) {
@@ -103,7 +103,6 @@ angular
                 Array.from(paddings).every((p) => Math.abs(p - newPadding) >= 5)
               ) {
                 elm.css("padding-top", newPadding);
-                console.log(elm.css("padding-top"));
                 paddings.add(newPadding);
                 setTimeout(f, 20);
               }
