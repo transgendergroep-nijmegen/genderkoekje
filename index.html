@@ -21,7 +21,7 @@
                         ng-class="{'widget-top names-widget-location-open': ctrl.widget == 'names', 'widget-bottom': ctrl.widget && ctrl.widget != 'names'}">
                         <div class="widget-scale border-radius-circle"
                             ng-class="{'widget-small': ctrl.widget != 'names'}">
-                            <div class="border-radius-circle"
+                            <div class="border-radius-circle pulsate-offset-names"
                                 ng-class="{'pulsate': ctrl.widget != 'names' && ctrl.profile.pronouns.size == 0, 'animation-pause': ctrl.widget != null}">
                                 <div class="circular-container">
                                     <div ng-if="ctrl.widget != 'names'" class="widget-icon names-widget-icon"
@@ -59,11 +59,48 @@
                         </div>
                     </div>
 
+                    <div class="widget widget-middle names-info-location border-radius-circle">
+                        <div class="widget-scale  border-radius-circle"
+                            ng-class="{'transition-delay': ctrl.widget == 'names', 'widget-tiny': ctrl.widget != 'names'}">
+                            <div class="border-radius-circle">
+                                <div class="circular-container info">
+                                    <div class="shapes-container">
+                                        <div class="shapes">
+                                            <div class="top-left"></div>
+                                            <div class="top-right-occupied"></div>
+                                            <div class="bottom-left"></div>
+                                            <div class="bottom-right"></div>
+                                        </div>
+                                        <div class="user-select-text" dynamic-padding-centering>
+
+                                            <h2>Naam en voornaamwoorden</h2>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text
+                                                ever
+                                                since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries.x
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="widget identity-widget-location border-radius-circle"
                         ng-class="{'widget-top identity-widget-location-open': ctrl.widget == 'identity', 'widget-bottom': ctrl.widget && ctrl.widget != 'identity'}">
                         <div class="widget-scale border-radius-circle"
                             ng-class="{'widget-small': ctrl.widget != 'identity'}">
-                            <div class="border-radius-circle"
+                            <div class="border-radius-circle pulsate-offset-identity"
                                 ng-class="{'pulsate': ctrl.widget != 'identity' && ctrl.profile.identity.x == null, 'animation-pause': ctrl.widget != null}">
                                 <div class="circular-container">
                                     <div ng-if="ctrl.widget != 'identity'" class="widget-icon identity-widget-icon"
@@ -113,11 +150,48 @@
                         </div>
                     </div>
 
+                    <div class="widget widget-middle identity-info-location border-radius-circle">
+                        <div class="widget-scale  border-radius-circle"
+                            ng-class="{'transition-delay': ctrl.widget == 'identity', 'widget-tiny': ctrl.widget != 'identity'}">
+                            <div class="border-radius-circle">
+                                <div class="circular-container info">
+                                    <div class="shapes-container">
+                                        <div class="shapes">
+                                            <div class="top-left-occupied"></div>
+                                            <div class="top-right"></div>
+                                            <div class="bottom-left"></div>
+                                            <div class="bottom-right"></div>
+                                        </div>
+                                        <div class="user-select-text" dynamic-padding-centering>
+
+                                            <h2>Identiteit</h2>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text
+                                                ever
+                                                since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries.x
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="widget expression-widget-location border-radius-circle"
                         ng-class="{'widget-top expression-widget-location-open': ctrl.widget == 'expression', 'widget-bottom': ctrl.widget && ctrl.widget != 'expression'}">
                         <div class="widget-scale border-radius-circle"
                             ng-class="{'widget-small': ctrl.widget != 'expression'}">
-                            <div class="border-radius-circle"
+                            <div class="border-radius-circle pulsate-offset-expression"
                                 ng-class="{'pulsate': ctrl.widget != 'expression' && ctrl.profile.expression.size == 0, 'animation-pause': ctrl.widget != null}">
                                 <div class="circular-container">
                                     <div ng-if="ctrl.widget != 'expression'" class="widget-icon expression-widget-icon"
@@ -146,11 +220,48 @@
                         </div>
                     </div>
 
+                    <div class="widget widget-middle expression-info-location border-radius-circle">
+                        <div class="widget-scale  border-radius-circle"
+                            ng-class="{'transition-delay': ctrl.widget == 'expression', 'widget-tiny': ctrl.widget != 'expression'}">
+                            <div class="border-radius-circle">
+                                <div class="circular-container info">
+                                    <div class="shapes-container">
+                                        <div class="shapes">
+                                            <div class="top-left-occupied"></div>
+                                            <div class="top-right"></div>
+                                            <div class="bottom-left"></div>
+                                            <div class="bottom-right"></div>
+                                        </div>
+                                        <div class="user-select-text" dynamic-padding-centering>
+
+                                            <h2>Expressie</h2>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text
+                                                ever
+                                                since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries.x
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="widget sexuality-widget-location border-radius-circle"
                         ng-class="{'widget-top sexuality-widget-location-open': ctrl.widget == 'sexuality', 'widget-bottom': ctrl.widget && ctrl.widget != 'expression'}">
                         <div class="widget-scale border-radius-circle"
                             ng-class="{'widget-small': ctrl.widget != 'sexuality'}">
-                            <div class="border-radius-circle"
+                            <div class="border-radius-circle pulsate-offset-sexuality"
                                 ng-class="{'pulsate': ctrl.widget != 'sexuality' && ctrl.profile.sexuality.x == null, 'animation-pause': ctrl.widget != null}">
                                 <div class="circular-container">
                                     <div ng-if="ctrl.widget != 'sexuality'" class="widget-icon sexuality-widget-icon"
@@ -199,11 +310,48 @@
                         </div>
                     </div>
 
+                    <div class="widget widget-middle sexuality-info-location border-radius-circle">
+                        <div class="widget-scale  border-radius-circle"
+                            ng-class="{'transition-delay': ctrl.widget == 'sexuality', 'widget-tiny': ctrl.widget != 'sexuality'}">
+                            <div class="border-radius-circle">
+                                <div class="circular-container info">
+                                    <div class="shapes-container">
+                                        <div class="shapes">
+                                            <div class="top-left"></div>
+                                            <div class="top-right-occupied"></div>
+                                            <div class="bottom-left"></div>
+                                            <div class="bottom-right"></div>
+                                        </div>
+                                        <div class="user-select-text" dynamic-padding-centering>
+
+                                            <h2>Seksualiteit en romantiek</h2>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text
+                                                ever
+                                                since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries.x
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="widget physical-widget-location border-radius-circle"
                         ng-class="{'widget-top physical-widget-location-open': ctrl.widget == 'physical', 'widget-bottom': ctrl.widget && ctrl.widget != 'physical'}">
                         <div class="widget-scale border-radius-circle"
                             ng-class="{'widget-small': ctrl.widget != 'physical'}">
-                            <div class="border-radius-circle"
+                            <div class="border-radius-circle pulsate-offset-physical"
                                 ng-class="{'pulsate': ctrl.widget != 'physical' && ctrl.profile.physical.size == 0, 'animation-pause': ctrl.widget != null}">
                                 <div class="circular-container">
                                     <div ng-if="ctrl.widget != 'physical'" class="widget-icon physical-widget-icon"
@@ -228,6 +376,43 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget widget-middle physical-info-location border-radius-circle">
+                        <div class="widget-scale  border-radius-circle"
+                            ng-class="{'transition-delay': ctrl.widget == 'physical', 'widget-tiny': ctrl.widget != 'physical'}">
+                            <div class="border-radius-circle">
+                                <div class="circular-container info">
+                                    <div class="shapes-container">
+                                        <div class="shapes">
+                                            <div class="top-left"></div>
+                                            <div class="top-right"></div>
+                                            <div class="bottom-left"></div>
+                                            <div class="bottom-right-occupied"></div>
+                                        </div>
+                                        <div class="user-select-text" dynamic-padding-centering>
+
+                                            <h2>Fysieke eigenschappen</h2>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text
+                                                ever
+                                                since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries. to make a type specimen book. It has survived not only
+                                                five
+                                                centuries.x
+                                            </p>
+
                                         </div>
                                     </div>
 

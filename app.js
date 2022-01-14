@@ -99,7 +99,6 @@ angular
               let padding = parseFloat(elm.css("padding-top") || 0);
               let height = elm[0].clientHeight - padding;
               let newPadding = (parentSize.height - height) / 2;
-              console.log(parentSize.height, padding, height, newPadding);
               if (
                 Array.from(paddings).every((p) => Math.abs(p - newPadding) >= 5)
               ) {
@@ -110,6 +109,7 @@ angular
               }
             };
             setTimeout(f);
+            angular.element($window).on("resize", f);
           },
           true
         );

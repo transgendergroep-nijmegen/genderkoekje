@@ -2,21 +2,36 @@
   --color-lightest: white;
   --color-light: #ffeadc;
   --color-base: #ff7f2a;
-  --color-dark: #d45500;
-  --color-darkest: #c44e00;
+  --color-dark: #ee5f00;
+  --color-darker: #c44e00;
+  --color-darkest: #853500;
   --color-tinted: #be5a5a;
-  --widget-size-open: 35vh;
+
+  --widget-size-open: 300px;
   --widget-size-open-half: calc(var(--widget-size-open) / 2);
+
+  --info-size-open: 400px;
   --names-widget-top: 17%;
   --names-widget-left: 80%;
   --identity-widget-top: 5%;
-  --identity-widget-left: 50%;
+  --identity-widget-left: 48%;
   --expression-widget-top: 40%;
   --expression-widget-left: 11%;
   --sexuality-widget-top: 47%;
   --sexuality-widget-left: 62%;
   --physical-widget-top: 80%;
   --physical-widget-left: 50%;
+
+  --names-info-top: 46%;
+  --names-info-left: 43%;
+  --identity-info-top: 51%;
+  --identity-info-left: 71%;
+  --expression-info-top: 71%;
+  --expression-info-left: 40%;
+  --sexuality-info-top: 69%;
+  --sexuality-info-left: 15%;
+  --physical-info-top: 45%;
+  --physical-info-left: 35%;
 }
 
 body {
@@ -95,6 +110,14 @@ h1 {
   transform: scale(0.2);
 }
 
+.widget-tiny {
+  transform: scale(0);
+}
+
+.transition-delay {
+  transition-delay: 0.1s;
+}
+
 .pulsate {
   animation-duration: 1s;
   animation-name: pulsate;
@@ -121,12 +144,36 @@ h1 {
   animation-play-state: paused;
 }
 
+.pulsate-offset-names {
+  animation-duration: 0.95s;
+}
+
+.pulsate-offset-identity {
+  animation-duration: 0.98s;
+}
+
+.pulsate-offset-expression {
+  animation-duration: 1.01s;
+}
+
+.pulsate-offset-sexuality {
+  animation-duration: 1.03s;
+}
+
+.pulsate-offset-physical {
+  animation-duration: 1s;
+}
+
 .widget-small:hover {
   transform: scale(0.3);
 }
 
-.widget-top {
+.widget-middle {
   z-index: 1;
+}
+
+.widget-top {
+  z-index: 2;
 }
 
 .widget-bottom {
@@ -174,9 +221,22 @@ h1 {
   border: 5px solid var(--color-base);
 }
 
+.circular-container h2 {
+  margin-top: 0;
+}
+
+.info {
+  width: var(--info-size-open);
+  height: var(--info-size-open);
+  background: var(--color-darker);
+  color: var(--color-lightest);
+  border: 5px solid var(--color-darkest);
+}
+
 .shapes-container {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 .circular-container .shapes-container .shapes div {
@@ -202,6 +262,26 @@ h1 {
 .circular-container .shapes-container .shapes .bottom-right {
   float: right;
   shape-outside: polygon(100% 100%, 0 100%, 75% 75%, 100% 0);
+}
+
+.circular-container .shapes-container .shapes .top-left-occupied {
+  float: left;
+  shape-outside: polygon(0 0, 100% 0, 0 100%);
+}
+
+.circular-container .shapes-container .shapes .top-right-occupied {
+  float: right;
+  shape-outside: polygon(100% 0, 100% 100%, 0 0);
+}
+
+.circular-container .shapes-container .shapes .bottom-left-occupied {
+  float: left;
+  shape-outside: polygon(0 100%, 0 0, 100% 100%);
+}
+
+.circular-container .shapes-container .shapes .bottom-right-occupied {
+  float: right;
+  shape-outside: polygon(100% 100%, 0 100%, 100% 0);
 }
 
 .name {
@@ -259,7 +339,7 @@ h1 {
 }
 
 .text-choices .choice:hover {
-  border: 3px solid var(--color-darkest);
+  border: 3px solid var(--color-darker);
 }
 
 .text-choices .selected {
@@ -297,6 +377,10 @@ h1 {
 
 .pointer-events-none {
   pointer-events: none;
+}
+
+.user-select-text {
+  user-select: text;
 }
 
 .border-radius-circle {
@@ -472,10 +556,10 @@ h1 {
     max(var(--names-widget-top), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
   );
-  left: min(
+  /* left: min(
     max(var(--names-widget-left), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
-  );
+  ); */
 }
 
 .identity-widget-location {
@@ -488,10 +572,10 @@ h1 {
     max(var(--identity-widget-top), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
   );
-  left: min(
+  /* left: min(
     max(var(--identity-widget-left), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
-  );
+  ); */
 }
 
 .expression-widget-location {
@@ -504,10 +588,10 @@ h1 {
     max(var(--expression-widget-top), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
   );
-  left: min(
+  /* left: min(
     max(var(--expression-widget-left), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
-  );
+  ); */
 }
 
 .sexuality-widget-location {
@@ -520,10 +604,10 @@ h1 {
     max(var(--sexuality-widget-top), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
   );
-  left: min(
+  /* left: min(
     max(var(--sexuality-widget-left), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
-  );
+  ); */
 }
 
 .physical-widget-location {
@@ -536,10 +620,35 @@ h1 {
     max(var(--physical-widget-top), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
   );
-  left: min(
+  /* left: min(
     max(var(--physical-widget-left), var(--widget-size-open-half)),
     calc(100% - var(--widget-size-open-half))
-  );
+  ); */
+}
+
+.names-info-location {
+  top: var(--names-info-top);
+  left: var(--names-info-left);
+}
+
+.identity-info-location {
+  top: var(--identity-info-top);
+  left: var(--identity-info-left);
+}
+
+.expression-info-location {
+  top: var(--expression-info-top);
+  left: var(--expression-info-left);
+}
+
+.sexuality-info-location {
+  top: var(--sexuality-info-top);
+  left: var(--sexuality-info-left);
+}
+
+.physical-info-location {
+  top: var(--physical-info-top);
+  left: var(--physical-info-left);
 }
 
 [ng\:cloak],
@@ -549,4 +658,5 @@ h1 {
 .ng-cloak,
 .x-ng-cloak {
   display: none !important;
+  transform: scale(0);
 }
