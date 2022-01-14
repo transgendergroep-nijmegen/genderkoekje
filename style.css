@@ -5,7 +5,7 @@
   --color-dark: #d45500;
   --color-darkest: #c44e00;
   --color-tinted: #be5a5a;
-  --widget-size-open: 300px;
+  --widget-size-open: 35vh;
   --widget-size-open-half: calc(var(--widget-size-open) / 2);
   --names-widget-top: 17%;
   --names-widget-left: 80%;
