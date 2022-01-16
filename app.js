@@ -95,6 +95,7 @@ angular
           },
           function (parentSize) {
             let paddings = new Set();
+
             let f = () => {
               let padding = parseFloat(elm.css("padding-top") || 0);
               let height = elm[0].clientHeight - padding;
@@ -102,11 +103,12 @@ angular
               if (
                 Array.from(paddings).every((p) => Math.abs(p - newPadding) >= 5)
               ) {
-                elm.css("padding-top", newPadding);
+                elm.css("padding-top", newPadding + "px");
                 paddings.add(newPadding);
-                setTimeout(f, 20);
+                setTimeout(f, 30);
               }
             };
+
             setTimeout(f);
             angular.element($window).on("resize", f);
           },
@@ -124,27 +126,12 @@ angular
         );
 
         let f = function () {
-          elm.css("width", element.prop("offsetWidth"));
-          elm.css("height", element.prop("offsetHeight"));
+          elm.css("width", element.prop("offsetWidth") + "px");
+          elm.css("height", element.prop("offsetHeight") + "px");
         };
 
         f();
-
         angular.element($window).on("resize", f);
-
-        // scope.$watch(
-        //   function () {
-        //     return {
-        //       width: element.prop("offsetWidth"),
-        //       height: element.prop("offsetHeight"),
-        //     };
-        //   },
-        //   function (elementSize) {
-        //     elm.css("width", elementSize.width);
-        //     elm.css("height", elementSize.height);
-        //   },
-        //   true
-        // );
       },
     };
   });

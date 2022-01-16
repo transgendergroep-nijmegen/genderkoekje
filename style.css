@@ -47,8 +47,8 @@ h1 {
 
 .figure {
   pointer-events: none;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
 }
@@ -239,47 +239,47 @@ h1 {
   text-align: center;
 }
 
-.circular-container .shapes-container .shapes div {
+.circular-container .shapes-container .shape {
   width: 50%;
   height: 50%;
 }
 
-.circular-container .shapes-container .shapes .top-left {
+.circular-container .shapes-container .top-left {
   float: left;
   shape-outside: polygon(0 0, 100% 0, 25% 25%, 0 100%);
 }
 
-.circular-container .shapes-container .shapes .top-right {
+.circular-container .shapes-container .top-right {
   float: right;
   shape-outside: polygon(100% 0, 100% 100%, 75% 25%, 0 0);
 }
 
-.circular-container .shapes-container .shapes .bottom-left {
+.circular-container .shapes-container .bottom-left {
   float: left;
   shape-outside: polygon(0 100%, 0 0, 25% 75%, 100% 100%);
 }
 
-.circular-container .shapes-container .shapes .bottom-right {
+.circular-container .shapes-container .bottom-right {
   float: right;
   shape-outside: polygon(100% 100%, 0 100%, 75% 75%, 100% 0);
 }
 
-.circular-container .shapes-container .shapes .top-left-occupied {
+.circular-container .shapes-container .top-left-occupied {
   float: left;
   shape-outside: polygon(0 0, 100% 0, 0 100%);
 }
 
-.circular-container .shapes-container .shapes .top-right-occupied {
+.circular-container .shapes-container .top-right-occupied {
   float: right;
   shape-outside: polygon(100% 0, 100% 100%, 0 0);
 }
 
-.circular-container .shapes-container .shapes .bottom-left-occupied {
+.circular-container .shapes-container .bottom-left-occupied {
   float: left;
   shape-outside: polygon(0 100%, 0 0, 100% 100%);
 }
 
-.circular-container .shapes-container .shapes .bottom-right-occupied {
+.circular-container .shapes-container .bottom-right-occupied {
   float: right;
   shape-outside: polygon(100% 100%, 0 100%, 100% 0);
 }
@@ -287,6 +287,10 @@ h1 {
 .name {
   text-align: center;
   border-bottom: 3px solid var(--color-base);
+}
+
+.field {
+  display: inline-block;
 }
 
 .field input {
@@ -298,7 +302,6 @@ h1 {
   color: var(--color-base);
   font-weight: bold;
   font-size: 1em;
-  display: inline-block;
   padding: 3%;
   margin: 4%;
   transition: all 0.2s ease;
@@ -402,12 +405,14 @@ h1 {
 
 .plot {
   --plot-padding: 7%;
+  width: 100%;
+  height: 100%;
   padding: var(--plot-padding);
   background: var(--color-lightest);
 }
 
 .plot .graph {
-  width: 100%;
+  width: calc(100% - var(--plot-padding) - var(--plot-padding));
   height: calc(100% - var(--plot-padding) - var(--plot-padding));
   position: relative;
 }

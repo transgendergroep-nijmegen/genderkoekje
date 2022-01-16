@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+
 <head>
     <title>Genderkoekje</title>
     <link rel="stylesheet" href="style.css">
@@ -8,14 +11,14 @@
     <div ng-controller="controller as ctrl" ng-cloak>
 
         <div class="figure">
-            <div class="image">
+            <div id="image" class="image">
 
                 <div class="outside-clicker" ng-class="{'outside-clicker-active': ctrl.widget}"
                     ng-click="ctrl.widget = null"></div>
 
-                <img id="figure" class="img" src="assets/figure.png">
+                <img id="img" class="img" src="assets/figure.png">
 
-                <div class="widgets" same-dimensions-as-id="#figure">
+                <div class="widgets" same-dimensions-as-id="#img">
 
                     <div class="widget names-widget-location border-radius-circle"
                         ng-class="{'widget-top names-widget-location-open': ctrl.widget == 'names', 'widget-bottom': ctrl.widget && ctrl.widget != 'names'}">
@@ -29,12 +32,10 @@
                                     </div>
 
                                     <div class="shapes-container" ng-if="ctrl.widget == 'names'">
-                                        <div class="shapes">
-                                            <div class="top-left"></div>
-                                            <div class="top-right"></div>
-                                            <div class="bottom-left"></div>
-                                            <div class="bottom-right"></div>
-                                        </div>
+                                        <div class="shape top-left"></div>
+                                        <div class="shape top-right"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
                                         <div dynamic-padding-centering>
                                             <div class="name">
                                                 <div class="field">
@@ -65,12 +66,10 @@
                             <div class="border-radius-circle">
                                 <div class="circular-container info">
                                     <div class="shapes-container">
-                                        <div class="shapes">
-                                            <div class="top-left"></div>
-                                            <div class="top-right-occupied"></div>
-                                            <div class="bottom-left"></div>
-                                            <div class="bottom-right"></div>
-                                        </div>
+                                        <div class="shape top-left"></div>
+                                        <div class="shape top-right-occupied"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
                                         <div class="user-select-text" dynamic-padding-centering>
 
                                             <h2>Naam en voornaamwoorden</h2>
@@ -156,12 +155,10 @@
                             <div class="border-radius-circle">
                                 <div class="circular-container info">
                                     <div class="shapes-container">
-                                        <div class="shapes">
-                                            <div class="top-left-occupied"></div>
-                                            <div class="top-right"></div>
-                                            <div class="bottom-left"></div>
-                                            <div class="bottom-right"></div>
-                                        </div>
+                                        <div class="shape top-left-occupied"></div>
+                                        <div class="shape top-right"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
                                         <div class="user-select-text" dynamic-padding-centering>
 
                                             <h2>Identiteit</h2>
@@ -199,12 +196,10 @@
                                     </div>
 
                                     <div class="shapes-container" ng-if="ctrl.widget == 'expression'">
-                                        <div class="shapes">
-                                            <div class="top-left"></div>
-                                            <div class="top-right"></div>
-                                            <div class="bottom-left"></div>
-                                            <div class="bottom-right"></div>
-                                        </div>
+                                        <div class="shape top-left"></div>
+                                        <div class="shape top-right"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
                                         <div class="clothing" dynamic-padding-centering>
                                             <div class="image-choices">
                                                 <img ng-repeat="clothingItem in ctrl.clothingItems" class="choice"
@@ -226,12 +221,10 @@
                             <div class="border-radius-circle">
                                 <div class="circular-container info">
                                     <div class="shapes-container">
-                                        <div class="shapes">
-                                            <div class="top-left-occupied"></div>
-                                            <div class="top-right"></div>
-                                            <div class="bottom-left"></div>
-                                            <div class="bottom-right"></div>
-                                        </div>
+                                        <div class="shape top-left-occupied"></div>
+                                        <div class="shape top-right"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
                                         <div class="user-select-text" dynamic-padding-centering>
 
                                             <h2>Expressie</h2>
@@ -316,12 +309,10 @@
                             <div class="border-radius-circle">
                                 <div class="circular-container info">
                                     <div class="shapes-container">
-                                        <div class="shapes">
-                                            <div class="top-left"></div>
-                                            <div class="top-right-occupied"></div>
-                                            <div class="bottom-left"></div>
-                                            <div class="bottom-right"></div>
-                                        </div>
+                                        <div class="shape top-left"></div>
+                                        <div class="shape top-right-occupied"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
                                         <div class="user-select-text" dynamic-padding-centering>
 
                                             <h2>Seksualiteit en romantiek</h2>
@@ -359,12 +350,10 @@
                                     </div>
 
                                     <div class="shapes-container" ng-if="ctrl.widget == 'physical'">
-                                        <div class="shapes">
-                                            <div class="top-left"></div>
-                                            <div class="top-right"></div>
-                                            <div class="bottom-left"></div>
-                                            <div class="bottom-right"></div>
-                                        </div>
+                                        <div class="shape top-left"></div>
+                                        <div class="shape top-right"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
                                         <div class="physical" dynamic-padding-centering>
                                             <div class="text-choices">
                                                 <div ng-repeat="physicalItemGroup in ctrl.physicalItemGroups"
@@ -390,12 +379,10 @@
                             <div class="border-radius-circle">
                                 <div class="circular-container info">
                                     <div class="shapes-container">
-                                        <div class="shapes">
-                                            <div class="top-left"></div>
-                                            <div class="top-right"></div>
-                                            <div class="bottom-left"></div>
-                                            <div class="bottom-right-occupied"></div>
-                                        </div>
+                                        <div class="shape top-left"></div>
+                                        <div class="shape top-right"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right-occupied"></div>
                                         <div class="user-select-text" dynamic-padding-centering>
 
                                             <h2>Fysieke eigenschappen</h2>
