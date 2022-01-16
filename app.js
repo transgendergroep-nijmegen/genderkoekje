@@ -62,6 +62,7 @@ angular
       this.Array = Array;
 
       this.widget = null;
+      this.moreInfo = null;
 
       this.plotMouseover = function (e) {
         let rect = e.target.getBoundingClientRect();

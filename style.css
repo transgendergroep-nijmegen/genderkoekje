@@ -9,8 +9,9 @@
 
   --widget-size-open: 300px;
   --widget-size-open-half: calc(var(--widget-size-open) / 2);
+  --info-size-open: 250px;
+  --more-info-size-open: 500px;
 
-  --info-size-open: 400px;
   --names-widget-top: 17%;
   --names-widget-left: 80%;
   --identity-widget-top: 5%;
@@ -26,8 +27,8 @@
   --names-info-left: 43%;
   --identity-info-top: 51%;
   --identity-info-left: 71%;
-  --expression-info-top: 71%;
-  --expression-info-left: 40%;
+  --expression-info-top: 35%;
+  --expression-info-left: 63%;
   --sexuality-info-top: 69%;
   --sexuality-info-left: 15%;
   --physical-info-top: 45%;
@@ -81,9 +82,17 @@ h1 {
   left: 0;
 }
 
+.outside-clicker-info {
+  z-index: 3;
+}
+
 .outside-clicker-active {
   pointer-events: all;
   backdrop-filter: blur(2px);
+}
+
+.outside-clicker-active-info {
+  pointer-events: all;
 }
 
 .widgets {
@@ -176,6 +185,13 @@ h1 {
   z-index: 2;
 }
 
+.widget-more-info {
+  z-index: 3;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+}
+
 .widget-bottom {
   pointer-events: none;
 }
@@ -231,6 +247,41 @@ h1 {
   background: var(--color-darker);
   color: var(--color-lightest);
   border: 5px solid var(--color-darkest);
+}
+
+.info p {
+  margin: 8px;
+}
+
+.more-info-button::before {
+  content: "?";
+}
+
+.more-info-button {
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  background: var(--color-light);
+  color: var(--color-dark);
+  padding: 2px;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+}
+
+.more-info-button:hover {
+  transform: scale(1.5);
+}
+
+.more-info {
+  top: 0;
+  left: 0;
+  width: var(--more-info-size-open);
+  height: var(--more-info-size-open);
+  background: var(--color-lightest);
+  color: var(--color-dark);
+  border: 5px solid var(--color-darker);
 }
 
 .shapes-container {
