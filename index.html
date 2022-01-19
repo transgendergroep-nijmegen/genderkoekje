@@ -424,16 +424,31 @@
                                         <h2>Identiteit</h2>
                                         <p>
                                             Gender is meer dan alleen 'man en vrouw'. Er zijn ook mensen die zich niet
-                                            identificeren als man of vrouw. Deze mensen kunnen zich bijvoorbeeld
-                                            identificeren als non-binair: een parapluterm voor alle genderidentiteiten
+                                            identificeren als <i>man</i> of <i>vrouw</i>. Deze mensen kunnen zich
+                                            bijvoorbeeld
+                                            identificeren als 'non-binair': een parapluterm voor alle genderidentiteiten
                                             die niet binnen het binaire beeld van 'man en vrouw' vallen.
                                         </p>
                                         <p>
                                             Je
                                             genderidentiteit heeft ook niet altijd te maken met het geslacht waarmee je
                                             geboren bent. Als je genderidentiteit overeenkomt met het geslacht waarmee
-                                            je geboren bent, noem je dat cisgender. Komt dit niet met elkaar overeen,
-                                            dan noem je het transgender.
+                                            je geboren bent, noem je dat <i>cisgender</i>. Komt dit niet met elkaar
+                                            overeen,
+                                            dan noem je het <i>transgender</i>.
+                                        </p>
+                                        <p>
+                                            In het schema staat op de horizontale as 'man/vrouw' en op de verticale as
+                                            'masculien/feminien'. Met <i>masculien</i> en <i>feminien</i> bedoelen we de
+                                            dingen die door de maatschappij als mannelijk of
+                                            vrouwelijk gezien worden. Iemand kan zich dus vrouw voelen, en dus op de
+                                            horizontale as <i>vrouw</i> invullen, maar zich wel masculien gedragen en
+                                            dus op
+                                            de
+                                            verticale as <i>masculien</i> invullen. Zo
+                                            zijn er veel
+                                            combinaties
+                                            mogelijk.
                                         </p>
 
                                     </div>
@@ -556,62 +571,7 @@
         </div>
     </div>
 
-    <div ng-if="false" ng-switch="ctrl.widget" ng-cloak>
-
-        <div ng-switch-when="welcome">
-            <h1>Welkom!</h1>
-
-            <button ng-click="ctrl.widget = 'names'">Start</button>
-        </div>
-
-        <div ng-switch-when="names">
-            <h1>Naam en voornaamwoorden</h1>
-
-            <button ng-click="ctrl.widget = 'identity'">Volgende</button>
-        </div>
-
-        <div ng-switch-when="identity">
-            <h1>Identiteit</h1>
-
-            <button ng-click="ctrl.widget = 'expression'">Volgende</button>
-        </div>
-
-        <div ng-switch-when="expression">
-            <h1>Expressie</h1>
-
-            <button ng-click="ctrl.widget = 'sexuality'">Volgende</button>
-        </div>
-
-        <div ng-switch-when="sexuality">
-            <h1>Seksualiteit en romantiek</h1>
-
-            <button ng-click="ctrl.widget = 'physical'">Volgende</button>
-        </div>
-
-        <div ng-switch-when="physical">
-            <h1>Fysiek</h1>
-
-            <button ng-click="ctrl.widget = 'result'">Volgende</button>
-        </div>
-
-        <div ng-switch-when="result">
-            <h1>Resultaat</h1>
-
-            <div>Pronouns: {{ctrl.Array.from(ctrl.profile.pronouns)}}</div>
-
-            <div>Clothing items: {{ctrl.Array.from(ctrl.profile.expression)}}</div>
-
-            <div>Physical items: {{ctrl.Array.from(ctrl.profile.physical)}}</div>
-
-            <div>Rest profile: {{ctrl.profile}}</div>
-
-            <button ng-click="ctrl.widget = 'welcome'">Opnieuw</button>
-        </div>
-
-    </div>
-
-    </div>
-
+    <script src="libs/html2canvas.min.js"></script>
     <script src="libs/angular.min.js"></script>
     <script src="app.js"></script>
 

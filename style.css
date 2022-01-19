@@ -8,8 +8,13 @@
   --color-tinted: #be5a5a;
 
   --widget-size-open: 300px;
+  --widget-size-open-diag: 425px;
   --widget-size-open-half: calc(var(--widget-size-open) / 2);
   --info-size-open: 250px;
+  --info-size-open-diag: 354px;
+  --info-offset: calc(
+    var(--info-size-open-diag) / 4 + var(--widget-size-open-diag) / 4
+  );
   --more-info-size-open: 500px;
 
   --names-widget-top: 17%;
@@ -22,17 +27,6 @@
   --sexuality-widget-left: 62%;
   --physical-widget-top: 80%;
   --physical-widget-left: 50%;
-
-  --names-info-top: 46%;
-  --names-info-left: 43%;
-  --identity-info-top: 51%;
-  --identity-info-left: 71%;
-  --expression-info-top: 35%;
-  --expression-info-left: 63%;
-  --sexuality-info-top: 69%;
-  --sexuality-info-left: 15%;
-  --physical-info-top: 45%;
-  --physical-info-left: 35%;
 }
 
 body {
@@ -683,28 +677,53 @@ h1 {
 }
 
 .names-info-location {
-  top: var(--names-info-top);
-  left: var(--names-info-left);
+  top: calc(
+    min(
+        max(var(--names-widget-top), var(--widget-size-open-half)),
+        calc(100% - var(--widget-size-open-half))
+      ) + var(--info-offset)
+  );
+  left: calc(var(--names-widget-left) - var(--info-offset));
 }
 
 .identity-info-location {
-  top: var(--identity-info-top);
-  left: var(--identity-info-left);
+  top: calc(
+    min(
+        max(var(--identity-widget-top), var(--widget-size-open-half)),
+        calc(100% - var(--widget-size-open-half))
+      ) + var(--info-offset)
+  );
+  left: calc(var(--identity-widget-left) + var(--info-offset));
 }
 
 .expression-info-location {
-  top: var(--expression-info-top);
-  left: var(--expression-info-left);
+  top: calc(
+    min(
+        max(var(--expression-widget-top), var(--widget-size-open-half)),
+        calc(100% - var(--widget-size-open-half))
+      ) + var(--info-offset)
+  );
+  left: calc(var(--expression-widget-left) + var(--info-offset));
 }
 
 .sexuality-info-location {
-  top: var(--sexuality-info-top);
-  left: var(--sexuality-info-left);
+  top: calc(
+    min(
+        max(var(--sexuality-widget-top), var(--widget-size-open-half)),
+        calc(100% - var(--widget-size-open-half))
+      ) - var(--info-offset)
+  );
+  left: calc(var(--sexuality-widget-left) - var(--info-offset));
 }
 
 .physical-info-location {
-  top: var(--physical-info-top);
-  left: var(--physical-info-left);
+  top: calc(
+    min(
+        max(var(--physical-widget-top), var(--widget-size-open-half)),
+        calc(100% - var(--widget-size-open-half))
+      ) - var(--info-offset)
+  );
+  left: calc(var(--physical-widget-left) + var(--info-offset));
 }
 
 [ng\:cloak],
