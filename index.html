@@ -512,7 +512,7 @@
                                                 <div class="text-choices">
                                                     <div ng-repeat="physicalItem in (ctrl.view == 'result' ? ctrl.Array.from(ctrl.profile.physical) : ctrl.physicalItems)"
                                                         class="choice"
-                                                        ng-class="{'selected': ctrl.profile.physical.has(physicalItem) && ctrl.view != 'result'}"
+                                                        ng-class="{'selected': ctrl.profile.physical.has(physicalItem)}"
                                                         ng-click="ctrl.profile.physical.has(physicalItem) ? ctrl.profile.physical.delete(physicalItem) : ctrl.profile.physical.add(physicalItem)">
                                                         {{physicalItem}}
                                                     </div>
