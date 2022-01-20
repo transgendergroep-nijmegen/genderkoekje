@@ -21,7 +21,7 @@
   --intro-1-left: 0%;
   --intro-2-top: 55%;
   --intro-2-left: 100%;
-  --intro-3-top: 25%;
+  --intro-3-top: 60%;
   --intro-3-left: 30%;
 
   --names-widget-top: 17%;
@@ -419,7 +419,7 @@ body {
   width: 70%;
   text-align: center;
   border: 3px solid var(--color-base);
-  border-radius: 20px;
+  border-radius: 3px;
   background: var(--color-lightest);
   color: var(--color-base);
   font-weight: bold;
@@ -430,9 +430,35 @@ body {
   filter: grayscale(1);
 }
 
+.mail input {
+  width: 80%;
+  font-size: 0.8em;
+}
+
+.error {
+  font-size: 0.8em;
+  color: red;
+}
+
+.spinner {
+  width: 20%;
+  height: 20%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 .field input:focus {
   outline: none;
-  border-radius: 0;
+}
+
+.field input::placeholder {
+  color: lightgray;
 }
 
 .field .filled {
@@ -696,9 +722,15 @@ body {
 }
 
 .result-message-location {
-  top: 50%;
-  left: 60%;
+  top: 60%;
+  left: 50%;
   z-index: 4;
+}
+
+.email-form-location {
+  top: 50%;
+  left: 50%;
+  z-index: 5;
 }
 
 .names-widget-location {

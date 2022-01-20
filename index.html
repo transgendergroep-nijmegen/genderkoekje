@@ -8,7 +8,7 @@
 
 <body ng-app="app">
 
-    <div ng-controller="controller as ctrl" ng-cloak>
+    <div id="capture" ng-controller="controller as ctrl" ng-cloak>
 
         <center class="title">
             <h1>GENDERKOEKJE</h1>
@@ -127,7 +127,7 @@
 
                 </div>
 
-                <div class="widget widget-middle result-message-location border-radius-circle">
+                <div class="widget widget-middle result-message-location border-radius-circle" data-html2canvas-ignore>
                     <div class="widget-scale  border-radius-circle transition-delay widget-tiny"
                         ng-class="{'widget-tiny': !ctrl.resultMessage}">
                         <div class="border-radius-circle">
@@ -166,18 +166,17 @@
                     <div class="widgets" same-dimensions-as-id="#img">
 
                         <div ng-if="ctrl.view != 'result'" class="widget names-widget-location border-radius-circle"
-                            ng-class="{'widget-top names-widget-location-open': ctrl.widget == 'names' || ctrl.tutorial >= 2, 'widget-bottom': ctrl.widget && ctrl.widget != 'names' && ctrl.tutorial < 2}">
+                            ng-class="{'widget-top names-widget-location-open': ctrl.widget == 'names', 'widget-bottom': ctrl.widget && ctrl.widget != 'names'}">
                             <div class="widget-scale border-radius-circle widget-small"
-                                ng-class="{'widget-small': ctrl.widget != 'names' && ctrl.tutorial < 2}">
+                                ng-class="{'widget-small': ctrl.widget != 'names'}">
                                 <div class="border-radius-circle pulsate-offset-names"
-                                    ng-class="{'pulsate': ctrl.widget != 'names' && ctrl.profile.pronouns.size == 0 && ctrl.tutorial < 2, 'animation-pause': ctrl.widget != null}">
+                                    ng-class="{'pulsate': ctrl.widget != 'names' && ctrl.profile.pronouns.size == 0, 'animation-pause': ctrl.widget != null}">
                                     <div class="circular-container">
-                                        <div ng-if="ctrl.widget != 'names' && ctrl.tutorial < 2"
-                                            class="widget-icon names-widget-icon" ng-click="ctrl.widget = 'names'">
+                                        <div ng-if="ctrl.widget != 'names'" class="widget-icon names-widget-icon"
+                                            ng-click="ctrl.widget = 'names'">
                                         </div>
 
-                                        <div class="shapes-container"
-                                            ng-if="ctrl.widget == 'names' || ctrl.tutorial >= 2">
+                                        <div class="shapes-container" ng-if="ctrl.widget == 'names'">
                                             <div class="shape top-left"></div>
                                             <div class="shape top-right"></div>
                                             <div class="shape bottom-left"></div>
@@ -209,7 +208,7 @@
 
                         <div class="widget widget-middle names-info-location border-radius-circle">
                             <div class="widget-scale border-radius-circle widget-tiny"
-                                ng-class="{'transition-delay': ctrl.widget == 'names' || ctrl.tutorial >= 3, 'widget-tiny': ctrl.widget != 'names' && ctrl.tutorial < 3}">
+                                ng-class="{'transition-delay': ctrl.widget == 'names', 'widget-tiny': ctrl.widget != 'names'}">
                                 <div class="border-radius-circle">
                                     <div class="circular-container info">
                                         <div class="shapes-container">
@@ -801,14 +800,70 @@
 
         </div>
 
-        <div ng-if="ctrl.view != 'intro'" class="flow-button restart-button" ng-click="ctrl.reset()">
+        <div ng-if="ctrl.view != 'intro' && !ctrl.resultMessage && !ctrl.emailForm" class="flow-button restart-button"
+            ng-click="ctrl.reset()" data-html2canvas-ignore>
             Herstarten
         </div>
 
-        <div ng-if="ctrl.view != 'result' && ctrl.profile.pronouns.size != 0 && ctrl.profile.identity.x && ctrl.profile.sexuality.x && ctrl.profile.expression.size != 0 && ctrl.profile.physical.size != 0"
+        <div ng-if="(ctrl.view != 'result' && ctrl.profile.pronouns.size != 0 && ctrl.profile.identity.x && ctrl.profile.sexuality.x && ctrl.profile.expression.size != 0 && ctrl.profile.physical.size != 0)"
             class="flow-button submit-button"
             ng-click="ctrl.setTitle(); ctrl.widget = null; ctrl.view = 'result'; ctrl.resultMessage = true">
             Klaar!
+        </div>
+
+        <div ng-if="ctrl.view == 'result' && !ctrl.resultMessage && !ctrl.emailForm" class="flow-button submit-button"
+            ng-click="ctrl.emailForm = true" data-html2canvas-ignore>
+            Mail je genderkoekje naar jezelf!
+        </div>
+
+        <div ng-if="ctrl.emailForm" class="outside-clicker outside-clicker-intro"
+            ng-click="ctrl.error = ctrl.error && ctrl.sendingMail; ctrl.emailForm = ctrl.sendingMail">
+        </div>
+
+        <div class="widget widget-middle email-form-location border-radius-circle"
+            ng-class="{'widget-tiny': !ctrl.emailForm}" data-html2canvas-ignore>
+            <div class="widget-scale border-radius-circle transition-delay widget-tiny"
+                ng-class="{'widget-tiny': !ctrl.emailForm}">
+                <div class="border-radius-circle">
+                    <div class="circular-container intro">
+                        <div class="shapes-container">
+                            <div class="shape top-left"></div>
+                            <div class="shape top-right"></div>
+                            <div class="shape bottom-left"></div>
+                            <div class="shape bottom-right"></div>
+                            <div class="user-select-text" dynamic-padding-centering>
+
+                                <p>
+                                    Voer je e-mailadres in om je genderkoekje te ontvangen.
+                                </p>
+
+                                <div ng-if="!ctrl.sendingMail">
+
+                                    <div class="field mail">
+                                        <input ng-class="{'filled': ctrl.email}" ng-model="ctrl.email"
+                                            ng-keyup="$event.keyCode == 13 && ctrl.sendMail();">
+                                    </div>
+
+                                    <div class="flow-button" ng-click="ctrl.sendMail();">
+                                        Versturen!
+                                    </div>
+
+                                </div>
+
+                                <div ng-if="ctrl.sendingMail">
+                                    <img class="spinner" src="assets/head.png">
+                                </div>
+
+                                <div ng-if="ctrl.error && !ctrl.sendingMail" class="error">
+                                    {{ctrl.error}}
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

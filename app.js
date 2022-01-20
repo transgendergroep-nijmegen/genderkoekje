@@ -10,8 +10,9 @@ function shuffleArray(array) {
 angular
   .module("app", [])
   .controller("controller", [
+    "$scope",
     "$timeout",
-    function ($timeout) {
+    function ($scope, $timeout) {
       this.reset = () => {
         this.title = "";
 
@@ -54,6 +55,8 @@ angular
           physical: new Set(),
         };
 
+        this.email = null;
+
         this.ui = {
           plot: { x: null, y: null },
         };
@@ -66,6 +69,8 @@ angular
         this.widget = null;
         this.moreInfo = null;
         this.resultMessage = false;
+        this.emailForm = false;
+        this.sendingMail = false;
 
         $timeout(() => {
           this.intro = 1;
@@ -105,6 +110,47 @@ angular
         } else {
           this.title = pronounString;
         }
+      };
+
+      this.sendMail = () => {
+        this.error = null;
+        this.sendingMail = true;
+        html2canvas(document.querySelector("#capture"), {
+          backgroundColor: "#ffeadc",
+          logging: false,
+        })
+          .then((canvas) => {
+            let dataURL = canvas.toDataURL("image/png");
+            fetch(
+              "https://script.google.com/macros/s/AKfycbyU_Uy9tOQ0ILDUZEkjPDKERXj91XEaLAq-tSrd8TLi6WV15W-whZ25V3qOmaMI4Q/exec",
+              {
+                redirect: "follow",
+                method: "POST",
+                body: JSON.stringify({
+                  email: this.email,
+                  name: this.profile.name,
+                  image: dataURL,
+                }),
+                headers: {
+                  "Content-Type": "text/plain;charset=utf-8",
+                },
+              }
+            )
+              .then((response) => {
+                this.sendingMail = false;
+                this.emailForm = false;
+                $scope.$apply();
+              })
+              .catch((err) => {
+                console.log(err);
+                this.sendingMail = false;
+                this.error = "Sorry, het is niet gelukt om te mailen.";
+                $scope.$apply();
+              });
+          })
+          .catch((err) => {
+            this.error = "Sorry, het is niet gelukt om te mailen.";
+          });
       };
     },
   ])
