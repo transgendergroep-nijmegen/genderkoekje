@@ -10,59 +10,69 @@ function shuffleArray(array) {
 angular
   .module("app", [])
   .controller("controller", [
-    function () {
-      this.pronouns = ["hij/zijn", "zij/haar", "die/diens", "hen/hun"];
+    "$timeout",
+    function ($timeout) {
+      this.reset = () => {
+        this.title = "";
 
-      this.clothingItems = [
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-      ];
+        this.pronouns = ["hij/zijn", "zij/haar", "die/diens", "hen/hun"];
 
-      this.physicalItemGroups = [
-        // ["borsten", "vagina", "baarmoeder/eierstokken"],
-        // ["penis/scrotum", "testikels"],
-        [
+        this.clothingItems = [
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+        ];
+
+        this.physicalItems = [
           "borsten",
           "vagina",
           "baarmoeder/eierstokken",
           "penis/scrotum",
           "testikels",
-        ],
-      ];
+        ];
 
-      shuffleArray(this.pronouns);
-      this.pronouns.push("andere");
-      shuffleArray(this.clothingItems);
-      this.physicalItemGroups.map(shuffleArray);
-      shuffleArray(this.physicalItemGroups);
+        shuffleArray(this.pronouns);
+        this.pronouns.push("andere");
+        shuffleArray(this.clothingItems);
+        shuffleArray(this.physicalItems);
 
-      this.profile = {
-        name: null,
-        pronouns: new Set(),
-        identity: {},
-        sexuality: {},
-        expression: new Set(),
-        physical: new Set(),
+        this.profile = {
+          name: null,
+          pronouns: new Set(),
+          identity: {},
+          sexuality: {},
+          expression: new Set(),
+          physical: new Set(),
+        };
+
+        this.ui = {
+          plot: { x: null, y: null },
+        };
+
+        this.Array = Array;
+
+        this.view = "intro";
+        this.intro = 0;
+        this.tutorial = 0;
+        this.widget = null;
+        this.moreInfo = null;
+        this.resultMessage = false;
+
+        $timeout(() => {
+          this.intro = 1;
+        }, 1000);
       };
 
-      this.ui = {
-        plot: { x: null, y: null },
-      };
-
-      this.Array = Array;
-
-      this.widget = null;
-      this.moreInfo = null;
+      this.reset();
 
       this.plotMouseover = function (e) {
         let rect = e.target.getBoundingClientRect();
@@ -78,6 +88,23 @@ angular
         obj.x = this.ui.plot.x;
         obj.y = this.ui.plot.y;
         this.ui.plot.x = this.ui.plot.y = null;
+      };
+
+      this.tutorialTimeout = () => {
+        $timeout(() => {
+          if (this.tutorial == 1) {
+            this.tutorial = 2;
+          }
+        }, 3000);
+      };
+
+      this.setTitle = () => {
+        let pronounString = Array.from(this.profile.pronouns).join(", ");
+        if (this.profile.name) {
+          this.title = `van ${this.profile.name} (${pronounString})`;
+        } else {
+          this.title = pronounString;
+        }
       };
     },
   ])

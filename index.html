@@ -10,7 +10,13 @@
 
     <div ng-controller="controller as ctrl" ng-cloak>
 
+        <center class="title">
+            <h1>GENDERKOEKJE</h1>
+            <h4>{{ctrl.title}}</h4>
+        </center>
+
         <div class="figure">
+
             <div id="image" class="image">
 
                 <div class="outside-clicker" ng-class="{'outside-clicker-active': ctrl.widget}"
@@ -18,40 +24,34 @@
 
                 <img id="img" class="img" src="assets/figure.png">
 
-                <div class="widgets" same-dimensions-as-id="#img">
+                <div ng-if="ctrl.view == 'intro'">
 
-                    <div class="widget names-widget-location border-radius-circle"
-                        ng-class="{'widget-top names-widget-location-open': ctrl.widget == 'names', 'widget-bottom': ctrl.widget && ctrl.widget != 'names'}">
-                        <div class="widget-scale border-radius-circle"
-                            ng-class="{'widget-small': ctrl.widget != 'names'}">
-                            <div class="border-radius-circle pulsate-offset-names"
-                                ng-class="{'pulsate': ctrl.widget != 'names' && ctrl.profile.pronouns.size == 0, 'animation-pause': ctrl.widget != null}">
-                                <div class="circular-container">
-                                    <div ng-if="ctrl.widget != 'names'" class="widget-icon names-widget-icon"
-                                        ng-click="ctrl.widget = 'names'">
-                                    </div>
-
-                                    <div class="shapes-container" ng-if="ctrl.widget == 'names'">
+                    <div class="widget widget-middle intro-1-location border-radius-circle">
+                        <div class="widget-scale  border-radius-circle transition-delay widget-tiny"
+                            ng-class="{'widget-tiny': ctrl.intro != 1}">
+                            <div class="border-radius-circle">
+                                <div class="circular-container intro">
+                                    <div class="shapes-container">
                                         <div class="shape top-left"></div>
                                         <div class="shape top-right"></div>
                                         <div class="shape bottom-left"></div>
                                         <div class="shape bottom-right"></div>
-                                        <div dynamic-padding-centering>
-                                            <div class="name">
-                                                <div class="field">
-                                                    <input class="name-field" ng-class="{'filled': ctrl.profile.name}"
-                                                        ng-model="ctrl.profile.name" placeholder="Anoniem">
-                                                </div>
+                                        <div class="user-select-text" dynamic-padding-centering>
+
+                                            <h2>Hoi hoi,<br>welkom in de kast.</h2>
+                                            <p>
+                                                Ik ben het <span style="color: var(--color-base)">Genderkoekje</span>.
+                                                Ik help
+                                                mensen om over
+                                                hun genderidentiteit en seksualiteit na te denken.
+                                                Hier in de kast ga jij dat ook doen.
+                                            </p>
+
+                                            <div class="flow-button"
+                                                ng-click="ctrl.intro = 2; ctrl.tutorial = 1; ctrl.tutorialTimeout()">
+                                                Laten we beginnen!
                                             </div>
-                                            <div class="pronouns">
-                                                <div class="text-choices">
-                                                    <div ng-repeat="pronoun in ctrl.pronouns" class="choice"
-                                                        ng-class="{'selected': ctrl.profile.pronouns.has(pronoun)}"
-                                                        ng-click="ctrl.profile.pronouns.has(pronoun) ? ctrl.profile.pronouns.delete(pronoun) : ctrl.profile.pronouns.add(pronoun)">
-                                                        {{pronoun}}
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
 
@@ -60,11 +60,512 @@
                         </div>
                     </div>
 
-                    <div class="widget widget-middle names-info-location border-radius-circle">
-                        <div class="widget-scale  border-radius-circle"
-                            ng-class="{'transition-delay': ctrl.widget == 'names', 'widget-tiny': ctrl.widget != 'names'}">
+                    <div class="widget widget-middle intro-2-location border-radius-circle">
+                        <div class="widget-scale  border-radius-circle transition-delay widget-tiny"
+                            ng-class="{'widget-tiny': ctrl.intro != 2}">
                             <div class="border-radius-circle">
-                                <div class="circular-container info">
+                                <div class="circular-container intro intro-2">
+                                    <div class="shapes-container">
+                                        <div class="shape top-left"></div>
+                                        <div class="shape top-right"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
+                                        <div class="user-select-text" dynamic-padding-centering>
+
+                                            <h2>Stippen</h2>
+                                            <p>
+                                                Op mij zie je vijf stippen. Door op deze stippen te klikken en de
+                                                schermpjes in te
+                                                vullen, ga je stap voor stap je eigen genderkoekje maken.
+                                            </p>
+
+                                            <div class="flow-button" ng-click="ctrl.intro = 3; ctrl.tutorial = 4">
+                                                Ok&#233;!
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget widget-middle intro-3-location border-radius-circle">
+                        <div class="widget-scale  border-radius-circle transition-delay widget-tiny"
+                            ng-class="{'widget-tiny': ctrl.intro != 3}">
+                            <div class="border-radius-circle">
+                                <div class="circular-container intro intro-2">
+                                    <div class="shapes-container">
+                                        <div class="shape top-left"></div>
+                                        <div class="shape top-right"></div>
+                                        <div class="shape bottom-left"></div>
+                                        <div class="shape bottom-right"></div>
+                                        <div class="user-select-text" dynamic-padding-centering>
+
+                                            <h2>Extra informatie</h2>
+                                            <p>
+                                                Bij elk schermpje staat een knop met een vraagteken om meer informatie
+                                                te krijgen.
+                                            </p>
+                                            <p>
+                                                Veel plezier!
+                                            </p>
+
+                                            <div class="flow-button"
+                                                ng-click="ctrl.intro = 0; ctrl.tutorial = 0; ctrl.view = 'widgets'">
+                                                Start!
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="widget widget-middle result-message-location border-radius-circle">
+                    <div class="widget-scale  border-radius-circle transition-delay widget-tiny"
+                        ng-class="{'widget-tiny': !ctrl.resultMessage}">
+                        <div class="border-radius-circle">
+                            <div class="circular-container intro">
+                                <div class="shapes-container">
+                                    <div class="shape top-left"></div>
+                                    <div class="shape top-right"></div>
+                                    <div class="shape bottom-left"></div>
+                                    <div class="shape bottom-right"></div>
+                                    <div class="user-select-text" dynamic-padding-centering>
+
+                                        <h2>Resultaat</h2>
+                                        <p>
+                                            Wat leuk dat je even bent komen kijken in de kast, hopelijk heb je er wat
+                                            van geleerd en vond jij het ook leuk! Maak een foto van je genderkoekje om
+                                            te bewaren. Tot ziens!
+                                        </p>
+
+                                        <div class="flow-button" ng-click="ctrl.resultMessage = false">
+                                            Resultaat bekijken
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="ctrl.view == 'intro' || ctrl.view == 'result'"
+                    class="outside-clicker outside-clicker-intro"></div>
+
+                <div ng-if="ctrl.view == 'widgets' || ctrl.view == 'result' || ctrl.tutorial >= 1">
+
+                    <div class="widgets" same-dimensions-as-id="#img">
+
+                        <div ng-if="ctrl.view != 'result'" class="widget names-widget-location border-radius-circle"
+                            ng-class="{'widget-top names-widget-location-open': ctrl.widget == 'names' || ctrl.tutorial >= 2, 'widget-bottom': ctrl.widget && ctrl.widget != 'names' && ctrl.tutorial < 2}">
+                            <div class="widget-scale border-radius-circle widget-small"
+                                ng-class="{'widget-small': ctrl.widget != 'names' && ctrl.tutorial < 2}">
+                                <div class="border-radius-circle pulsate-offset-names"
+                                    ng-class="{'pulsate': ctrl.widget != 'names' && ctrl.profile.pronouns.size == 0 && ctrl.tutorial < 2, 'animation-pause': ctrl.widget != null}">
+                                    <div class="circular-container">
+                                        <div ng-if="ctrl.widget != 'names' && ctrl.tutorial < 2"
+                                            class="widget-icon names-widget-icon" ng-click="ctrl.widget = 'names'">
+                                        </div>
+
+                                        <div class="shapes-container"
+                                            ng-if="ctrl.widget == 'names' || ctrl.tutorial >= 2">
+                                            <div class="shape top-left"></div>
+                                            <div class="shape top-right"></div>
+                                            <div class="shape bottom-left"></div>
+                                            <div class="shape bottom-right"></div>
+                                            <div dynamic-padding-centering>
+                                                <div class="name">
+                                                    <div class="field">
+                                                        <input class="name-field"
+                                                            ng-class="{'filled': ctrl.profile.name}"
+                                                            ng-model="ctrl.profile.name" placeholder="Anoniem">
+                                                    </div>
+                                                </div>
+                                                <div class="pronouns">
+                                                    <div class="text-choices">
+                                                        <div ng-repeat="pronoun in ctrl.pronouns" class="choice"
+                                                            ng-class="{'selected': ctrl.profile.pronouns.has(pronoun)}"
+                                                            ng-click="ctrl.profile.pronouns.has(pronoun) ? ctrl.profile.pronouns.delete(pronoun) : ctrl.profile.pronouns.add(pronoun)">
+                                                            {{pronoun}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget widget-middle names-info-location border-radius-circle">
+                            <div class="widget-scale border-radius-circle widget-tiny"
+                                ng-class="{'transition-delay': ctrl.widget == 'names' || ctrl.tutorial >= 3, 'widget-tiny': ctrl.widget != 'names' && ctrl.tutorial < 3}">
+                                <div class="border-radius-circle">
+                                    <div class="circular-container info">
+                                        <div class="shapes-container">
+                                            <div class="shape top-left"></div>
+                                            <div class="shape top-right"></div>
+                                            <div class="shape bottom-left"></div>
+                                            <div class="shape bottom-right"></div>
+                                            <div class="user-select-text" dynamic-padding-centering>
+
+                                                <h2>Naam en voornaamwoorden</h2>
+                                                <p>
+                                                    Vul hier je naam in, en klik je voornaamwoorden aan.
+                                                </p>
+                                                <span class="more-info-button"
+                                                    ng-click="ctrl.moreInfo = 'names'"></span>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget identity-widget-location border-radius-circle"
+                            ng-class="{'widget-top identity-widget-location-open': ctrl.widget == 'identity', 'identity-widget-location-result': ctrl.view == 'result', 'widget-bottom': ctrl.widget && ctrl.widget != 'identity' && ctrl.view != 'result'}">
+                            <center ng-if="ctrl.view == 'result'">
+                                <h4>Identiteit</h4>
+                            </center>
+                            <div class="widget-scale border-radius-circle widget-small"
+                                ng-class="{'widget-small': ctrl.widget != 'identity' && ctrl.view != 'result'}">
+                                <div class="border-radius-circle pulsate-offset-identity"
+                                    ng-class="{'pulsate': ctrl.widget != 'identity' && ctrl.profile.identity.x == null && ctrl.view != 'result', 'animation-pause': ctrl.widget != null}">
+                                    <div class="circular-container">
+                                        <div ng-if="ctrl.widget != 'identity' && ctrl.view != 'result'"
+                                            class="widget-icon identity-widget-icon"
+                                            ng-click="ctrl.widget = 'identity'">
+                                        </div>
+
+                                        <div ng-if="ctrl.widget == 'identity' || ctrl.view == 'result'">
+                                            <div class="plot-container">
+                                                <div class="plot">
+                                                    <div class="graph border-radius-circle">
+                                                        <div class="pointer-events-none">
+                                                            <div class="axes border-radius-circle">
+                                                                <div class="vertical"></div>
+                                                                <div class="horizontal"></div>
+                                                            </div>
+                                                            <div class="labels labels-sides">
+                                                                <div class="left">Man</div>
+                                                                <div class="right">Vrouw</div>
+                                                                <div class="top">Feminien</div>
+                                                                <div class="bottom">Masculien</div>
+                                                            </div>
+                                                            <div class="selection-axes border-radius-circle"
+                                                                ng-if="ctrl.ui.plot.x != null">
+                                                                <div class="vertical"
+                                                                    ng-style="{'width': ctrl.ui.plot.x + '%'}">
+                                                                </div>
+                                                                <div class="horizontal"
+                                                                    ng-style="{'height': ctrl.ui.plot.y + '%'}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="dot" ng-if="ctrl.profile.identity.x != null"
+                                                                ng-style="{'top': ctrl.profile.identity.y + '%', 'left': ctrl.profile.identity.x + '%'}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="pointer-events border-radius-circle"
+                                                            ng-mousemove="ctrl.plotMouseover($event)"
+                                                            ng-mouseleave="ctrl.plotMouseleave($event)"
+                                                            ng-click="ctrl.plotMouseclick($event, ctrl.profile.identity)">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget widget-middle identity-info-location border-radius-circle">
+                            <div class="widget-scale border-radius-circle widget-tiny"
+                                ng-class="{'transition-delay': ctrl.widget == 'identity', 'widget-tiny': ctrl.widget != 'identity'}">
+                                <div class="border-radius-circle">
+                                    <div class="circular-container info">
+                                        <div class="shapes-container">
+                                            <div class="shape top-left"></div>
+                                            <div class="shape top-right"></div>
+                                            <div class="shape bottom-left"></div>
+                                            <div class="shape bottom-right"></div>
+                                            <div class="user-select-text" dynamic-padding-centering>
+
+                                                <h2>Identiteit</h2>
+                                                <p>
+                                                    Je genderidentiteit geeft aan met welk gender je je identificeert.
+                                                    Je
+                                                    kan in het schema een plek kiezen om je genderidentiteit aan te
+                                                    geven.
+                                                </p>
+                                                <span class="more-info-button"
+                                                    ng-click="ctrl.moreInfo = 'identity'"></span>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget expression-widget-location border-radius-circle"
+                            ng-class="{'widget-top expression-widget-location-open': ctrl.widget == 'expression', 'expression-widget-location-result': ctrl.view == 'result', 'widget-bottom': ctrl.widget && ctrl.widget != 'expression' && ctrl.view != 'result'}">
+                            <div class="widget-scale border-radius-circle widget-small"
+                                ng-class="{'widget-small': ctrl.widget != 'expression' && ctrl.view != 'result'}">
+                                <div class="border-radius-circle pulsate-offset-expression"
+                                    ng-class="{'pulsate': ctrl.widget != 'expression' && ctrl.view != 'result' && ctrl.profile.expression.size == 0, 'animation-pause': ctrl.widget != null}">
+                                    <div class="circular-container">
+                                        <div ng-if="ctrl.widget != 'expression' && ctrl.view != 'result'"
+                                            class="widget-icon expression-widget-icon"
+                                            ng-click="ctrl.widget = 'expression'">
+                                        </div>
+
+                                        <div class="shapes-container"
+                                            ng-if="ctrl.widget == 'expression' || ctrl.view == 'result'">
+                                            <div class="shape top-left"></div>
+                                            <div class="shape top-right"></div>
+                                            <div class="shape bottom-left"></div>
+                                            <div class="shape bottom-right"></div>
+                                            <div ng-if="ctrl.view != 'result'" class="clothing">
+                                                <div class="image-choices">
+                                                    <img ng-repeat="clothingItem in (ctrl.view == 'result' ? ctrl.Array.from(ctrl.profile.expression) : ctrl.clothingItems)"
+                                                        class="choice"
+                                                        ng-class="{'selected': ctrl.profile.expression.has(clothingItem) && ctrl.view != 'result', 'color': ctrl.view == 'result'}"
+                                                        ng-src="assets/clothing-item-{{clothingItem}}.png"
+                                                        draggable="false"
+                                                        ng-click="ctrl.profile.expression.has(clothingItem) ? ctrl.profile.expression.delete(clothingItem) : ctrl.profile.expression.add(clothingItem)">
+                                                </div>
+                                            </div>
+                                            <div ng-if="ctrl.view == 'result'" class="clothing"
+                                                dynamic-padding-centering>
+                                                <div class="image-choices">
+                                                    <img ng-repeat="clothingItem in (ctrl.view == 'result' ? ctrl.Array.from(ctrl.profile.expression) : ctrl.clothingItems)"
+                                                        class="choice"
+                                                        ng-class="{'selected': ctrl.profile.expression.has(clothingItem) && ctrl.view != 'result', 'color': ctrl.view == 'result'}"
+                                                        ng-src="assets/clothing-item-{{clothingItem}}.png"
+                                                        draggable="false"
+                                                        ng-click="ctrl.profile.expression.has(clothingItem) ? ctrl.profile.expression.delete(clothingItem) : ctrl.profile.expression.add(clothingItem)">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <center ng-if="ctrl.view == 'result'">
+                                <h4>Expressie</h4>
+                            </center>
+                        </div>
+
+                        <div class="widget widget-middle expression-info-location border-radius-circle">
+                            <div class="widget-scale border-radius-circle widget-tiny"
+                                ng-class="{'transition-delay': ctrl.widget == 'expression', 'widget-tiny': ctrl.widget != 'expression'}">
+                                <div class="border-radius-circle">
+                                    <div class="circular-container info">
+                                        <div class="shapes-container">
+                                            <div class="shape top-left"></div>
+                                            <div class="shape top-right"></div>
+                                            <div class="shape bottom-left"></div>
+                                            <div class="shape bottom-right"></div>
+                                            <div class="user-select-text" dynamic-padding-centering>
+
+                                                <h2>Expressie</h2>
+                                                <p>
+                                                    Je genderexpressie is hoe je uiting geeft aan je eigen gender. Kies
+                                                    hier
+                                                    de plaatjes die horen bij jouw genderexpressie.
+                                                </p>
+                                                <span class="more-info-button"
+                                                    ng-click="ctrl.moreInfo = 'expression'"></span>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget sexuality-widget-location border-radius-circle"
+                            ng-class="{'widget-top sexuality-widget-location-open': ctrl.widget == 'sexuality', 'sexuality-widget-location-result': ctrl.view == 'result', 'widget-bottom': ctrl.widget && ctrl.widget != 'expression' && ctrl.view != 'result'}">
+                            <div class="widget-scale border-radius-circle widget-small"
+                                ng-class="{'widget-small': ctrl.widget != 'sexuality' && ctrl.view != 'result'}">
+                                <div class="border-radius-circle pulsate-offset-sexuality"
+                                    ng-class="{'pulsate': ctrl.widget != 'sexuality' && ctrl.view != 'result' && ctrl.profile.sexuality.x == null, 'animation-pause': ctrl.widget != null}">
+                                    <div class="circular-container">
+                                        <div ng-if="ctrl.widget != 'sexuality' && ctrl.view != 'result'"
+                                            class="widget-icon sexuality-widget-icon"
+                                            ng-click="ctrl.widget = 'sexuality'">
+                                        </div>
+
+                                        <div ng-if="ctrl.widget == 'sexuality' || ctrl.view == 'result'">
+                                            <div class="plot-container">
+                                                <div class="plot">
+                                                    <div class="graph border-radius-circle">
+                                                        <div class="pointer-events-none">
+                                                            <div class="axes">
+                                                                <div class="box border-radius-soft"></div>
+                                                            </div>
+                                                            <div class="labels labels-corners">
+                                                                <div class="top-left">Mannen</div>
+                                                                <div class="top-right">Alle<br>genders</div>
+                                                                <div class="bottom-left">Geen<br>aantrekking</div>
+                                                                <div class="bottom-right">Vrouwen</div>
+                                                            </div>
+                                                            <div class="selection-axes border-radius-soft"
+                                                                ng-if="ctrl.ui.plot.x != null">
+                                                                <div class="vertical"
+                                                                    ng-style="{'width': ctrl.ui.plot.x + '%'}"></div>
+                                                                <div class="horizontal"
+                                                                    ng-style="{'height': ctrl.ui.plot.y + '%'}"></div>
+                                                            </div>
+                                                            <div class="dot" ng-if="ctrl.profile.sexuality.x != null"
+                                                                ng-style="{'top': ctrl.profile.sexuality.y + '%', 'left': ctrl.profile.sexuality.x + '%'}">
+                                                            </div>
+                                                            <div class="center"></div>
+
+                                                        </div>
+                                                        <div class="pointer-events border-radius-soft"
+                                                            ng-mousemove="ctrl.plotMouseover($event)"
+                                                            ng-mouseleave="ctrl.plotMouseleave($event)"
+                                                            ng-click="ctrl.plotMouseclick($event, ctrl.profile.sexuality)">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <center ng-if="ctrl.view == 'result'">
+                                <h4>Seksualiteit<br>en romantiek</h4>
+                            </center>
+                        </div>
+
+                        <div class="widget widget-middle sexuality-info-location border-radius-circle">
+                            <div class="widget-scale border-radius-circle widget-tiny"
+                                ng-class="{'transition-delay': ctrl.widget == 'sexuality', 'widget-tiny': ctrl.widget != 'sexuality'}">
+                                <div class="border-radius-circle">
+                                    <div class="circular-container info">
+                                        <div class="shapes-container">
+                                            <div class="shape top-left"></div>
+                                            <div class="shape top-right"></div>
+                                            <div class="shape bottom-left"></div>
+                                            <div class="shape bottom-right"></div>
+                                            <div class="user-select-text" dynamic-padding-centering>
+
+                                                <h2>Seksualiteit en romantiek</h2>
+                                                <p>
+                                                    Je seksualiteit en romantische aantrekking bepaalt op wie je valt.
+                                                    Je
+                                                    kan hier in het plaatje een plek kiezen om je seksualiteit en
+                                                    romantische aantrekking aan te geven.
+                                                </p>
+                                                <span class="more-info-button"
+                                                    ng-click="ctrl.moreInfo = 'sexuality'"></span>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget physical-widget-location border-radius-circle"
+                            ng-class="{'widget-top physical-widget-location-open': ctrl.widget == 'physical', 'physical-widget-location-result': ctrl.view == 'result', 'widget-bottom': ctrl.widget && ctrl.widget != 'physical' && ctrl.view != 'result'}">
+                            <center ng-if="ctrl.view == 'result'">
+                                <h4>Fysieke<br>eigenschappen</h4>
+                            </center>
+                            <div class="widget-scale border-radius-circle widget-small"
+                                ng-class="{'widget-small': ctrl.widget != 'physical' && ctrl.view != 'result'}">
+                                <div class="border-radius-circle pulsate-offset-physical"
+                                    ng-class="{'pulsate': ctrl.widget != 'physical' && ctrl.view != 'result' && ctrl.profile.physical.size == 0, 'animation-pause': ctrl.widget != null}">
+                                    <div class="circular-container">
+                                        <div ng-if="ctrl.widget != 'physical' && ctrl.view != 'result'"
+                                            class="widget-icon physical-widget-icon"
+                                            ng-click="ctrl.widget = 'physical'">
+                                        </div>
+
+                                        <div class="shapes-container"
+                                            ng-if="ctrl.widget == 'physical' || ctrl.view == 'result'">
+                                            <div class="shape top-left"></div>
+                                            <div class="shape top-right"></div>
+                                            <div class="shape bottom-left"></div>
+                                            <div class="shape bottom-right"></div>
+                                            <div class="physical" dynamic-padding-centering>
+                                                <div class="text-choices">
+                                                    <div ng-repeat="physicalItem in (ctrl.view == 'result' ? ctrl.Array.from(ctrl.profile.physical) : ctrl.physicalItems)"
+                                                        class="choice"
+                                                        ng-class="{'selected': ctrl.profile.physical.has(physicalItem) && ctrl.view != 'result'}"
+                                                        ng-click="ctrl.profile.physical.has(physicalItem) ? ctrl.profile.physical.delete(physicalItem) : ctrl.profile.physical.add(physicalItem)">
+                                                        {{physicalItem}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget widget-middle physical-info-location border-radius-circle">
+                            <div class="widget-scale border-radius-circle widget-tiny"
+                                ng-class="{'transition-delay': ctrl.widget == 'physical', 'widget-tiny': ctrl.widget != 'physical'}">
+                                <div class="border-radius-circle">
+                                    <div class="circular-container info">
+                                        <div class="shapes-container">
+                                            <div class="shape top-left"></div>
+                                            <div class="shape top-right"></div>
+                                            <div class="shape bottom-left"></div>
+                                            <div class="shape bottom-right"></div>
+                                            <div class="user-select-text" dynamic-padding-centering>
+
+                                                <h2>Fysieke eigenschappen</h2>
+                                                <p>
+                                                    Hier staan de geslachtskenmerken waarmee je geboren kan worden
+                                                    of
+                                                    die je later in hun leven kan krijgen. Klik hier op degene die
+                                                    van
+                                                    jou van toepassing zijn.
+                                                </p>
+                                                <span class="more-info-button"
+                                                    ng-click="ctrl.moreInfo = 'physical'"></span>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="outside-clicker outside-clicker-info"
+                        ng-class="{'outside-clicker-active-info': ctrl.moreInfo}" ng-click="ctrl.moreInfo = null">
+                    </div>
+
+                    <div class="widget widget-more-info border-radius-circle">
+                        <div class="widget-scale border-radius-circle widget-tiny"
+                            ng-class="{'transition-delay': ctrl.moreInfo == 'names', 'widget-tiny': ctrl.moreInfo != 'names'}">
+                            <div class="border-radius-circle">
+                                <div class="circular-container more-info">
                                     <div class="shapes-container">
                                         <div class="shape top-left"></div>
                                         <div class="shape top-right"></div>
@@ -74,9 +575,22 @@
 
                                             <h2>Naam en voornaamwoorden</h2>
                                             <p>
-                                                Vul hier je naam in, en klik je voornaamwoorden aan.
+                                                Voornaamwoorden zijn de woorden die je kan gebruiken om naar iemand
+                                                te
+                                                verwijzen. Naast de meest gebruikte voornaamwoorden die hier staan,
+                                                gebruiken sommige mensen ook 'neopronouns': dit zijn voornaamwoorden
+                                                die
+                                                onafhankelijk zijn van de traditionele derdepersoons
+                                                voornaamwoorden.
+                                                Voorbeelden van neopronouns zijn: <i>xe/xem/xyr</i>,
+                                                <i>ey/em/eir</i> en
+                                                <i>zie/hir/hir</i>.
                                             </p>
-                                            <span class="more-info-button" ng-click="ctrl.moreInfo = 'names'"></span>
+                                            <p>
+                                                Het is niet altijd duidelijk welke voornaamwoorden iemand gebruikt -
+                                                je
+                                                kan dit altijd aan diegene vragen.
+                                            </p>
 
                                         </div>
                                     </div>
@@ -86,65 +600,11 @@
                         </div>
                     </div>
 
-                    <div class="widget identity-widget-location border-radius-circle"
-                        ng-class="{'widget-top identity-widget-location-open': ctrl.widget == 'identity', 'widget-bottom': ctrl.widget && ctrl.widget != 'identity'}">
-                        <div class="widget-scale border-radius-circle"
-                            ng-class="{'widget-small': ctrl.widget != 'identity'}">
-                            <div class="border-radius-circle pulsate-offset-identity"
-                                ng-class="{'pulsate': ctrl.widget != 'identity' && ctrl.profile.identity.x == null, 'animation-pause': ctrl.widget != null}">
-                                <div class="circular-container">
-                                    <div ng-if="ctrl.widget != 'identity'" class="widget-icon identity-widget-icon"
-                                        ng-click="ctrl.widget = 'identity'">
-                                    </div>
-
-                                    <div ng-if="ctrl.widget == 'identity'">
-                                        <div class="plot-container">
-                                            <div class="plot">
-                                                <div class="graph border-radius-circle">
-                                                    <div class="pointer-events-none">
-                                                        <div class="axes border-radius-circle">
-                                                            <div class="vertical"></div>
-                                                            <div class="horizontal"></div>
-                                                        </div>
-                                                        <div class="labels labels-sides">
-                                                            <div class="left">Man</div>
-                                                            <div class="right">Vrouw</div>
-                                                            <div class="top">Feminien</div>
-                                                            <div class="bottom">Masculien</div>
-                                                        </div>
-                                                        <div class="selection-axes border-radius-circle"
-                                                            ng-if="ctrl.ui.plot.x != null">
-                                                            <div class="vertical"
-                                                                ng-style="{'width': ctrl.ui.plot.x + '%'}">
-                                                            </div>
-                                                            <div class="horizontal"
-                                                                ng-style="{'height': ctrl.ui.plot.y + '%'}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="dot" ng-if="ctrl.profile.identity.x != null"
-                                                            ng-style="{'top': ctrl.profile.identity.y + '%', 'left': ctrl.profile.identity.x + '%'}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="pointer-events border-radius-circle"
-                                                        ng-mousemove="ctrl.plotMouseover($event)"
-                                                        ng-mouseleave="ctrl.plotMouseleave($event)"
-                                                        ng-click="ctrl.plotMouseclick($event, ctrl.profile.identity)">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="widget widget-middle identity-info-location border-radius-circle">
-                        <div class="widget-scale  border-radius-circle"
-                            ng-class="{'transition-delay': ctrl.widget == 'identity', 'widget-tiny': ctrl.widget != 'identity'}">
+                    <div class="widget widget-more-info border-radius-circle">
+                        <div class="widget-scale border-radius-circle widget-tiny"
+                            ng-class="{'transition-delay': ctrl.moreInfo == 'identity', 'widget-tiny': ctrl.moreInfo != 'identity'}">
                             <div class="border-radius-circle">
-                                <div class="circular-container info">
+                                <div class="circular-container more-info">
                                     <div class="shapes-container">
                                         <div class="shape top-left"></div>
                                         <div class="shape top-right"></div>
@@ -154,10 +614,48 @@
 
                                             <h2>Identiteit</h2>
                                             <p>
-                                                Je genderidentiteit geeft aan met welk gender je je identificeert. Je
-                                                kan in het schema een plek kiezen om je genderidentiteit aan te geven.
+                                                Gender is meer dan alleen 'man en vrouw'. Er zijn ook mensen die
+                                                zich
+                                                niet
+                                                identificeren als <i>man</i> of <i>vrouw</i>. Deze mensen kunnen
+                                                zich
+                                                bijvoorbeeld
+                                                identificeren als 'non-binair': een parapluterm voor alle
+                                                genderidentiteiten
+                                                die niet binnen het binaire beeld van 'man en vrouw' vallen.
                                             </p>
-                                            <span class="more-info-button" ng-click="ctrl.moreInfo = 'identity'"></span>
+                                            <p>
+                                                Je
+                                                genderidentiteit heeft ook niet altijd te maken met het geslacht
+                                                waarmee
+                                                je
+                                                geboren bent. Als je genderidentiteit overeenkomt met het geslacht
+                                                waarmee
+                                                je geboren bent, noem je dat <i>cisgender</i>. Komt dit niet met
+                                                elkaar
+                                                overeen,
+                                                dan noem je het <i>transgender</i>.
+                                            </p>
+                                            <p>
+                                                In het schema staat op de horizontale as 'man/vrouw' en op de
+                                                verticale
+                                                as
+                                                'masculien/feminien'. Met <i>masculien</i> en <i>feminien</i>
+                                                bedoelen
+                                                we de
+                                                dingen die door de maatschappij als mannelijk of
+                                                vrouwelijk gezien worden. Iemand kan zich dus vrouw voelen, en dus
+                                                op de
+                                                horizontale as <i>vrouw</i> invullen, maar zich wel masculien
+                                                gedragen
+                                                en
+                                                dus op
+                                                de
+                                                verticale as <i>masculien</i> invullen. Zo
+                                                zijn er veel
+                                                combinaties
+                                                mogelijk.
+                                            </p>
 
                                         </div>
                                     </div>
@@ -167,42 +665,11 @@
                         </div>
                     </div>
 
-                    <div class="widget expression-widget-location border-radius-circle"
-                        ng-class="{'widget-top expression-widget-location-open': ctrl.widget == 'expression', 'widget-bottom': ctrl.widget && ctrl.widget != 'expression'}">
-                        <div class="widget-scale border-radius-circle"
-                            ng-class="{'widget-small': ctrl.widget != 'expression'}">
-                            <div class="border-radius-circle pulsate-offset-expression"
-                                ng-class="{'pulsate': ctrl.widget != 'expression' && ctrl.profile.expression.size == 0, 'animation-pause': ctrl.widget != null}">
-                                <div class="circular-container">
-                                    <div ng-if="ctrl.widget != 'expression'" class="widget-icon expression-widget-icon"
-                                        ng-click="ctrl.widget = 'expression'">
-                                    </div>
-
-                                    <div class="shapes-container" ng-if="ctrl.widget == 'expression'">
-                                        <div class="shape top-left"></div>
-                                        <div class="shape top-right"></div>
-                                        <div class="shape bottom-left"></div>
-                                        <div class="shape bottom-right"></div>
-                                        <div class="clothing">
-                                            <div class="image-choices">
-                                                <img ng-repeat="clothingItem in ctrl.clothingItems" class="choice"
-                                                    ng-class="{'selected': ctrl.profile.expression.has(clothingItem)}"
-                                                    ng-src="assets/clothing-item-{{clothingItem}}.png" draggable="false"
-                                                    ng-click="ctrl.profile.expression.has(clothingItem) ? ctrl.profile.expression.delete(clothingItem) : ctrl.profile.expression.add(clothingItem)">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="widget widget-middle expression-info-location border-radius-circle">
-                        <div class="widget-scale  border-radius-circle"
-                            ng-class="{'transition-delay': ctrl.widget == 'expression', 'widget-tiny': ctrl.widget != 'expression'}">
+                    <div class="widget widget-more-info border-radius-circle">
+                        <div class="widget-scale border-radius-circle widget-tiny"
+                            ng-class="{'transition-delay': ctrl.moreInfo == 'expression', 'widget-tiny': ctrl.moreInfo != 'expression'}">
                             <div class="border-radius-circle">
-                                <div class="circular-container info">
+                                <div class="circular-container more-info">
                                     <div class="shapes-container">
                                         <div class="shape top-left"></div>
                                         <div class="shape top-right"></div>
@@ -212,11 +679,14 @@
 
                                             <h2>Expressie</h2>
                                             <p>
-                                                Je genderexpressie is hoe je uiting geeft aan je eigen gender. Kies hier
-                                                de plaatjes die horen bij jouw genderexpressie.
+                                                Je genderexpressie kan bestaan uit de kleding die je draagt, het
+                                                kapsel
+                                                dat
+                                                je hebt, de make-up die je draagt en alle andere vormen van
+                                                uiterlijke
+                                                uitdrukking. Je genderexpressie hangt niet per se samen met je
+                                                genderidentiteit of het geslacht waarmee je geboren bent.
                                             </p>
-                                            <span class="more-info-button"
-                                                ng-click="ctrl.moreInfo = 'expression'"></span>
 
                                         </div>
                                     </div>
@@ -226,64 +696,11 @@
                         </div>
                     </div>
 
-                    <div class="widget sexuality-widget-location border-radius-circle"
-                        ng-class="{'widget-top sexuality-widget-location-open': ctrl.widget == 'sexuality', 'widget-bottom': ctrl.widget && ctrl.widget != 'expression'}">
-                        <div class="widget-scale border-radius-circle"
-                            ng-class="{'widget-small': ctrl.widget != 'sexuality'}">
-                            <div class="border-radius-circle pulsate-offset-sexuality"
-                                ng-class="{'pulsate': ctrl.widget != 'sexuality' && ctrl.profile.sexuality.x == null, 'animation-pause': ctrl.widget != null}">
-                                <div class="circular-container">
-                                    <div ng-if="ctrl.widget != 'sexuality'" class="widget-icon sexuality-widget-icon"
-                                        ng-click="ctrl.widget = 'sexuality'">
-                                    </div>
-
-                                    <div ng-if="ctrl.widget == 'sexuality'">
-                                        <div class="plot-container">
-                                            <div class="plot">
-                                                <div class="graph border-radius-circle">
-                                                    <div class="pointer-events-none">
-                                                        <div class="axes">
-                                                            <div class="box border-radius-soft"></div>
-                                                        </div>
-                                                        <div class="labels labels-corners">
-                                                            <div class="top-left">Mannen</div>
-                                                            <div class="top-right">Alle<br>genders</div>
-                                                            <div class="bottom-left">Geen<br>aantrekking</div>
-                                                            <div class="bottom-right">Vrouwen</div>
-                                                        </div>
-                                                        <div class="selection-axes border-radius-soft"
-                                                            ng-if="ctrl.ui.plot.x != null">
-                                                            <div class="vertical"
-                                                                ng-style="{'width': ctrl.ui.plot.x + '%'}"></div>
-                                                            <div class="horizontal"
-                                                                ng-style="{'height': ctrl.ui.plot.y + '%'}"></div>
-                                                        </div>
-                                                        <div class="dot" ng-if="ctrl.profile.sexuality.x != null"
-                                                            ng-style="{'top': ctrl.profile.sexuality.y + '%', 'left': ctrl.profile.sexuality.x + '%'}">
-                                                        </div>
-                                                        <div class="center"></div>
-
-                                                    </div>
-                                                    <div class="pointer-events border-radius-soft"
-                                                        ng-mousemove="ctrl.plotMouseover($event)"
-                                                        ng-mouseleave="ctrl.plotMouseleave($event)"
-                                                        ng-click="ctrl.plotMouseclick($event, ctrl.profile.sexuality)">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="widget widget-middle sexuality-info-location border-radius-circle">
-                        <div class="widget-scale  border-radius-circle"
-                            ng-class="{'transition-delay': ctrl.widget == 'sexuality', 'widget-tiny': ctrl.widget != 'sexuality'}">
+                    <div class="widget widget-more-info border-radius-circle">
+                        <div class="widget-scale border-radius-circle widget-tiny"
+                            ng-class="{'transition-delay': ctrl.moreInfo == 'sexuality', 'widget-tiny': ctrl.moreInfo != 'sexuality'}">
                             <div class="border-radius-circle">
-                                <div class="circular-container info">
+                                <div class="circular-container more-info">
                                     <div class="shapes-container">
                                         <div class="shape top-left"></div>
                                         <div class="shape top-right"></div>
@@ -293,12 +710,39 @@
 
                                             <h2>Seksualiteit en romantiek</h2>
                                             <p>
-                                                Je seksualiteit en romantische aantrekking bepaalt op wie je valt. Je
-                                                kan hier in het plaatje een plek kiezen om je seksualiteit en
-                                                romantische aantrekking aan te geven.
+                                                Seksualiteit gaat over tot wie je je seksueel aangetrokken voelt.
+                                                Romantische aantrekking gaat over tot wie je je romantisch
+                                                aangetrokken
+                                                voelt. Deze twee hoeven niet hetzelfde te zijn.
                                             </p>
-                                            <span class="more-info-button"
-                                                ng-click="ctrl.moreInfo = 'sexuality'"></span>
+                                            <p>
+                                                Je kan je aangetrokken
+                                                voelen tot iemand van hetzelfde geslacht: dat noemen we
+                                                homoseksueel. Je
+                                                kan
+                                                je ook aangetrokken voelen tot iemand van het andere geslacht: dit
+                                                noemen we
+                                                heteroseksueel. Er zijn ook mensen die vallen op zowel mensen van
+                                                hetzelfde
+                                                geslacht als van het andere geslacht: deze mensen zijn biseksueel.Je
+                                                kan
+                                                je
+                                                ook aangetrokken voelen tot mensen van alle genders: dit noem je
+                                                panseksueel
+                                                of omniseksueel. Er zijn ook mensen die helemaal geen of minder
+                                                seksuele
+                                                aantrekking voelen tot anderen: dit noem je aseksueel. Als mensen
+                                                zich
+                                                niet
+                                                romantisch voelen aangetrokken tot anderen noem je dit aromantisch.
+                                            </p>
+                                            <p>
+                                                Dit zijn de meestvoorkomende en bekendste seksualiteiten, maar er
+                                                zijn
+                                                er
+                                                nog heel
+                                                veel meer!
+                                            </p>
 
                                         </div>
                                     </div>
@@ -308,46 +752,11 @@
                         </div>
                     </div>
 
-                    <div class="widget physical-widget-location border-radius-circle"
-                        ng-class="{'widget-top physical-widget-location-open': ctrl.widget == 'physical', 'widget-bottom': ctrl.widget && ctrl.widget != 'physical'}">
-                        <div class="widget-scale border-radius-circle"
-                            ng-class="{'widget-small': ctrl.widget != 'physical'}">
-                            <div class="border-radius-circle pulsate-offset-physical"
-                                ng-class="{'pulsate': ctrl.widget != 'physical' && ctrl.profile.physical.size == 0, 'animation-pause': ctrl.widget != null}">
-                                <div class="circular-container">
-                                    <div ng-if="ctrl.widget != 'physical'" class="widget-icon physical-widget-icon"
-                                        ng-click="ctrl.widget = 'physical'">
-                                    </div>
-
-                                    <div class="shapes-container" ng-if="ctrl.widget == 'physical'">
-                                        <div class="shape top-left"></div>
-                                        <div class="shape top-right"></div>
-                                        <div class="shape bottom-left"></div>
-                                        <div class="shape bottom-right"></div>
-                                        <div class="physical" dynamic-padding-centering>
-                                            <div class="text-choices">
-                                                <div ng-repeat="physicalItemGroup in ctrl.physicalItemGroups"
-                                                    class="choice-group">
-                                                    <div ng-repeat="physicalItem in physicalItemGroup" class="choice"
-                                                        ng-class="{'selected': ctrl.profile.physical.has(physicalItem)}"
-                                                        ng-click="ctrl.profile.physical.has(physicalItem) ? ctrl.profile.physical.delete(physicalItem) : ctrl.profile.physical.add(physicalItem)">
-                                                        {{physicalItem}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="widget widget-middle physical-info-location border-radius-circle">
-                        <div class="widget-scale  border-radius-circle"
-                            ng-class="{'transition-delay': ctrl.widget == 'physical', 'widget-tiny': ctrl.widget != 'physical'}">
+                    <div class="widget widget-more-info border-radius-circle">
+                        <div class="widget-scale border-radius-circle widget-tiny"
+                            ng-class="{'transition-delay': ctrl.moreInfo == 'physical', 'widget-tiny': ctrl.moreInfo != 'physical'}">
                             <div class="border-radius-circle">
-                                <div class="circular-container info">
+                                <div class="circular-container more-info">
                                     <div class="shapes-container">
                                         <div class="shape top-left"></div>
                                         <div class="shape top-right"></div>
@@ -357,11 +766,27 @@
 
                                             <h2>Fysieke eigenschappen</h2>
                                             <p>
-                                                Hier staan de geslachtskenmerken waarmee je geboren kan worden of
-                                                die je later in hun leven kan krijgen. Klik hier op degene die van
-                                                jou van toepassing zijn.
+                                                Iedereen wordt geboren met bepaalde geslachtskenmerken. Op basis
+                                                hiervan
+                                                wordt bepaalt of een kind een meisje is (het kind heeft een vulva en
+                                                vagina), of dat het een jongen genoemd wordt (het kind heeft een
+                                                penis
+                                                en
+                                                testikels). Sommige mensen zijn geboren met een combinatie van deze
+                                                kenmerken die niet 'regulier' is voor een jongen of meisje. Deze
+                                                mensen
+                                                noemen we intersekse.
                                             </p>
-                                            <span class="more-info-button" ng-click="ctrl.moreInfo = 'physical'"></span>
+                                            <p>
+                                                Het gaat hier specifiek over het fysieke geslacht dat bij de
+                                                geboorte
+                                                wordt
+                                                toegewezen: dit hoeft niet het geslacht te zijn waarmee iemand zich
+                                                identificeert. Een transman (een man die als baby het geslacht vrouw
+                                                toegewezen heeft gekregen) is evengoed een man als hij nog borsten,
+                                                een
+                                                baarmoeder en een vagina heeft.
+                                            </p>
 
                                         </div>
                                     </div>
@@ -372,203 +797,20 @@
                     </div>
                 </div>
 
-                <div class="outside-clicker outside-clicker-info"
-                    ng-class="{'outside-clicker-active-info': ctrl.moreInfo}" ng-click="ctrl.moreInfo = null"></div>
-
-                <div class="widget widget-more-info border-radius-circle">
-                    <div class="widget-scale  border-radius-circle"
-                        ng-class="{'transition-delay': ctrl.moreInfo == 'names', 'widget-tiny': ctrl.moreInfo != 'names'}">
-                        <div class="border-radius-circle">
-                            <div class="circular-container more-info">
-                                <div class="shapes-container">
-                                    <div class="shape top-left"></div>
-                                    <div class="shape top-right"></div>
-                                    <div class="shape bottom-left"></div>
-                                    <div class="shape bottom-right"></div>
-                                    <div class="user-select-text" dynamic-padding-centering>
-
-                                        <h2>Naam en voornaamwoorden</h2>
-                                        <p>
-                                            Voornaamwoorden zijn de woorden die je kan gebruiken om naar iemand te
-                                            verwijzen. Naast de meest gebruikte voornaamwoorden die hier staan,
-                                            gebruiken sommige mensen ook 'neopronouns': dit zijn voornaamwoorden die
-                                            onafhankelijk zijn van de traditionele derdepersoons voornaamwoorden.
-                                            Voorbeelden van neopronouns zijn: <i>xe/xem/xyr</i>, <i>ey/em/eir</i> en
-                                            <i>zie/hir/hir</i>.
-                                        </p>
-                                        <p>
-                                            Het is niet altijd duidelijk welke voornaamwoorden iemand gebruikt - je
-                                            kan dit altijd aan diegene vragen.
-                                        </p>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="widget widget-more-info border-radius-circle">
-                    <div class="widget-scale  border-radius-circle"
-                        ng-class="{'transition-delay': ctrl.moreInfo == 'identity', 'widget-tiny': ctrl.moreInfo != 'identity'}">
-                        <div class="border-radius-circle">
-                            <div class="circular-container more-info">
-                                <div class="shapes-container">
-                                    <div class="shape top-left"></div>
-                                    <div class="shape top-right"></div>
-                                    <div class="shape bottom-left"></div>
-                                    <div class="shape bottom-right"></div>
-                                    <div class="user-select-text" dynamic-padding-centering>
-
-                                        <h2>Identiteit</h2>
-                                        <p>
-                                            Gender is meer dan alleen 'man en vrouw'. Er zijn ook mensen die zich niet
-                                            identificeren als <i>man</i> of <i>vrouw</i>. Deze mensen kunnen zich
-                                            bijvoorbeeld
-                                            identificeren als 'non-binair': een parapluterm voor alle genderidentiteiten
-                                            die niet binnen het binaire beeld van 'man en vrouw' vallen.
-                                        </p>
-                                        <p>
-                                            Je
-                                            genderidentiteit heeft ook niet altijd te maken met het geslacht waarmee je
-                                            geboren bent. Als je genderidentiteit overeenkomt met het geslacht waarmee
-                                            je geboren bent, noem je dat <i>cisgender</i>. Komt dit niet met elkaar
-                                            overeen,
-                                            dan noem je het <i>transgender</i>.
-                                        </p>
-                                        <p>
-                                            In het schema staat op de horizontale as 'man/vrouw' en op de verticale as
-                                            'masculien/feminien'. Met <i>masculien</i> en <i>feminien</i> bedoelen we de
-                                            dingen die door de maatschappij als mannelijk of
-                                            vrouwelijk gezien worden. Iemand kan zich dus vrouw voelen, en dus op de
-                                            horizontale as <i>vrouw</i> invullen, maar zich wel masculien gedragen en
-                                            dus op
-                                            de
-                                            verticale as <i>masculien</i> invullen. Zo
-                                            zijn er veel
-                                            combinaties
-                                            mogelijk.
-                                        </p>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="widget widget-more-info border-radius-circle">
-                    <div class="widget-scale  border-radius-circle"
-                        ng-class="{'transition-delay': ctrl.moreInfo == 'expression', 'widget-tiny': ctrl.moreInfo != 'expression'}">
-                        <div class="border-radius-circle">
-                            <div class="circular-container more-info">
-                                <div class="shapes-container">
-                                    <div class="shape top-left"></div>
-                                    <div class="shape top-right"></div>
-                                    <div class="shape bottom-left"></div>
-                                    <div class="shape bottom-right"></div>
-                                    <div class="user-select-text" dynamic-padding-centering>
-
-                                        <h2>Expressie</h2>
-                                        <p>
-                                            Je genderexpressie kan bestaan uit de kleding die je draagt, het kapsel dat
-                                            je hebt, de make-up die je draagt en alle andere vormen van uiterlijke
-                                            uitdrukking. Je genderexpressie hangt niet per se samen met je
-                                            genderidentiteit of het geslacht waarmee je geboren bent.
-                                        </p>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="widget widget-more-info border-radius-circle">
-                    <div class="widget-scale  border-radius-circle"
-                        ng-class="{'transition-delay': ctrl.moreInfo == 'sexuality', 'widget-tiny': ctrl.moreInfo != 'sexuality'}">
-                        <div class="border-radius-circle">
-                            <div class="circular-container more-info">
-                                <div class="shapes-container">
-                                    <div class="shape top-left"></div>
-                                    <div class="shape top-right"></div>
-                                    <div class="shape bottom-left"></div>
-                                    <div class="shape bottom-right"></div>
-                                    <div class="user-select-text" dynamic-padding-centering>
-
-                                        <h2>Seksualiteit en romantiek</h2>
-                                        <p>
-                                            Seksualiteit gaat over tot wie je je seksueel aangetrokken voelt.
-                                            Romantische aantrekking gaat over tot wie je je romantisch aangetrokken
-                                            voelt. Deze twee hoeven niet hetzelfde te zijn.
-                                        </p>
-                                        <p>
-                                            Je kan je aangetrokken
-                                            voelen tot iemand van hetzelfde geslacht: dat noemen we homoseksueel. Je kan
-                                            je ook aangetrokken voelen tot iemand van het andere geslacht: dit noemen we
-                                            heteroseksueel. Er zijn ook mensen die vallen op zowel mensen van hetzelfde
-                                            geslacht als van het andere geslacht: deze mensen zijn biseksueel.Je kan je
-                                            ook aangetrokken voelen tot mensen van alle genders: dit noem je panseksueel
-                                            of omniseksueel. Er zijn ook mensen die helemaal geen of minder seksuele
-                                            aantrekking voelen tot anderen: dit noem je aseksueel. Als mensen zich niet
-                                            romantisch voelen aangetrokken tot anderen noem je dit aromantisch.
-                                        </p>
-                                        <p>
-                                            Dit zijn de meestvoorkomende en bekendste seksualiteiten, maar er zijn er
-                                            nog heel
-                                            veel meer!
-                                        </p>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="widget widget-more-info border-radius-circle">
-                    <div class="widget-scale  border-radius-circle"
-                        ng-class="{'transition-delay': ctrl.moreInfo == 'physical', 'widget-tiny': ctrl.moreInfo != 'physical'}">
-                        <div class="border-radius-circle">
-                            <div class="circular-container more-info">
-                                <div class="shapes-container">
-                                    <div class="shape top-left"></div>
-                                    <div class="shape top-right"></div>
-                                    <div class="shape bottom-left"></div>
-                                    <div class="shape bottom-right"></div>
-                                    <div class="user-select-text" dynamic-padding-centering>
-
-                                        <h2>Fysieke eigenschappen</h2>
-                                        <p>
-                                            Iedereen wordt geboren met bepaalde geslachtskenmerken. Op basis hiervan
-                                            wordt bepaalt of een kind een meisje is (het kind heeft een vulva en
-                                            vagina), of dat het een jongen genoemd wordt (het kind heeft een penis en
-                                            testikels). Sommige mensen zijn geboren met een combinatie van deze
-                                            kenmerken die niet 'regulier' is voor een jongen of meisje. Deze mensen
-                                            noemen we intersekse.
-                                        </p>
-                                        <p>
-                                            Het gaat hier specifiek over het fysieke geslacht dat bij de geboorte wordt
-                                            toegewezen: dit hoeft niet het geslacht te zijn waarmee iemand zich
-                                            identificeert. Een transman (een man die als baby het geslacht vrouw
-                                            toegewezen heeft gekregen) is evengoed een man als hij nog borsten, een
-                                            baarmoeder en een vagina heeft.
-                                        </p>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
         </div>
+
+        <div ng-if="ctrl.view != 'intro'" class="flow-button restart-button" ng-click="ctrl.reset()">
+            Herstarten
+        </div>
+
+        <div ng-if="ctrl.view != 'result' && ctrl.profile.pronouns.size != 0 && ctrl.profile.identity.x && ctrl.profile.sexuality.x && ctrl.profile.expression.size != 0 && ctrl.profile.physical.size != 0"
+            class="flow-button submit-button"
+            ng-click="ctrl.setTitle(); ctrl.widget = null; ctrl.view = 'result'; ctrl.resultMessage = true">
+            Klaar!
+        </div>
+
     </div>
 
     <script src="libs/html2canvas.min.js"></script>

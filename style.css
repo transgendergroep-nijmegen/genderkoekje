@@ -17,6 +17,13 @@
   );
   --more-info-size-open: 500px;
 
+  --intro-1-top: 15%;
+  --intro-1-left: 0%;
+  --intro-2-top: 55%;
+  --intro-2-left: 100%;
+  --intro-3-top: 25%;
+  --intro-3-left: 30%;
+
   --names-widget-top: 17%;
   --names-widget-left: 80%;
   --identity-widget-top: 5%;
@@ -36,14 +43,63 @@ body {
   overflow: hidden;
 }
 
-h1 {
+.title {
+  pointer-events: none;
+  width: 100vw;
+  height: 10vh;
+  color: var(--color-base);
+  font-size: 3vh;
+  filter: drop-shadow(0 0 2px var(--color-base));
+}
+
+.title h1 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.title h4 {
+  margin: 0px;
+}
+
+.flow-button {
+  border: 3px solid var(--color-dark);
+  border-radius: 20px;
+  background: var(--color-base);
   color: var(--color-lightest);
+  font-weight: bold;
+  display: inline-block;
+  padding: 3%;
+  margin: 1%;
+  transition: all 0.2s ease;
+}
+
+.flow-button:hover {
+  cursor: pointer;
+  border: 3px solid var(--color-dark);
+  background: var(--color-dark);
+  color: var(--color-lightest);
+}
+
+.restart-button {
+  position: fixed;
+  padding: 10px;
+  bottom: 2%;
+  left: 6%;
+  z-index: 5;
+}
+
+.submit-button {
+  position: fixed;
+  padding: 10px;
+  bottom: 2%;
+  right: 6%;
+  z-index: 5;
 }
 
 .figure {
   pointer-events: none;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
 }
@@ -85,6 +141,11 @@ h1 {
   backdrop-filter: blur(2px);
 }
 
+.outside-clicker-intro {
+  pointer-events: all;
+  z-index: 3;
+}
+
 .outside-clicker-active-info {
   pointer-events: all;
 }
@@ -95,6 +156,11 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.widget h4 {
+  color: var(--color-dark);
+  margin: 5px;
 }
 
 .widget {
@@ -233,6 +299,17 @@ h1 {
 
 .circular-container h2 {
   margin-top: 0;
+}
+
+.intro {
+  background: var(--color-light);
+  color: var(--color-darker);
+  border: 5px solid var(--color-base);
+}
+
+.intro-2 {
+  width: var(--info-size-open);
+  height: var(--info-size-open);
 }
 
 .info {
@@ -393,6 +470,10 @@ h1 {
 .text-choices .selected {
   filter: grayscale(0);
   background: var(--color-light);
+}
+
+.color {
+  filter: grayscale(0) !important;
 }
 
 .text-choices .clear {
@@ -596,6 +677,30 @@ h1 {
   transform: translateX(-50%) translateY(-50%);
 }
 
+.intro-1-location {
+  top: var(--intro-1-top);
+  left: var(--intro-1-left);
+  z-index: 4;
+}
+
+.intro-2-location {
+  top: var(--intro-2-top);
+  left: var(--intro-2-left);
+  z-index: 4;
+}
+
+.intro-3-location {
+  top: var(--intro-3-top);
+  left: var(--intro-3-left);
+  z-index: 4;
+}
+
+.result-message-location {
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+}
+
 .names-widget-location {
   top: var(--names-widget-top);
   left: var(--names-widget-left);
@@ -724,6 +829,26 @@ h1 {
       ) - var(--info-offset)
   );
   left: calc(var(--physical-widget-left) + var(--info-offset));
+}
+
+.identity-widget-location-result {
+  top: 70%;
+  left: -15%;
+}
+
+.expression-widget-location-result {
+  top: 15%;
+  left: -15%;
+}
+
+.sexuality-widget-location-result {
+  top: 15%;
+  left: 115%;
+}
+
+.physical-widget-location-result {
+  top: 70%;
+  left: 115%;
 }
 
 [ng\:cloak],
