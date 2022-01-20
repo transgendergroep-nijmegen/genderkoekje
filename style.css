@@ -863,24 +863,24 @@ body {
   left: calc(var(--physical-widget-left) + var(--info-offset));
 }
 
-.identity-widget-location-result {
-  top: 70%;
-  left: -15%;
+.expression-widget-location-result {
+  top: calc(40% - var(--widget-size-open) / 2 - 2em);
+  left: calc(-1 * var(--widget-size-open) / 4);
 }
 
-.expression-widget-location-result {
-  top: 15%;
-  left: -15%;
+.identity-widget-location-result {
+  top: calc(40% + var(--widget-size-open) / 2 + 2em);
+  left: calc(-1 * var(--widget-size-open) / 4);
 }
 
 .sexuality-widget-location-result {
-  top: 15%;
-  left: 115%;
+  top: calc(40% - var(--widget-size-open) / 2 - 2em);
+  left: calc(100% + var(--widget-size-open) / 4);
 }
 
 .physical-widget-location-result {
-  top: 70%;
-  left: 115%;
+  top: calc(40% + var(--widget-size-open) / 2 + 2em);
+  left: calc(100% + var(--widget-size-open) / 4);
 }
 
 [ng\:cloak],
