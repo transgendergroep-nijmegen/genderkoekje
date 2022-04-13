@@ -7,12 +7,21 @@ function shuffleArray(array) {
   }
 }
 
+firebase.initializeApp({
+  apiKey: "AIzaSyAs8_xBrNDOBLX-8ysqyTR0Us5MuHOVLik",
+  authDomain: "genderkoekje.firebaseapp.com",
+  databaseURL: "https://genderkoekje-default-rtdb.firebaseio.com",
+});
+
 angular
-  .module("app", [])
+  .module("app", ["firebase"])
   .controller("controller", [
     "$scope",
     "$timeout",
-    function ($scope, $timeout) {
+    "$firebaseArray",
+    function ($scope, $timeout, $firebaseArray) {
+      this.entries = $firebaseArray(firebase.database().ref("entries"));
+
       this.reset = () => {
         this.title = "";
 
@@ -110,6 +119,18 @@ angular
         } else {
           this.title = pronounString;
         }
+      };
+
+      this.saveEntry = () => {
+        this.entries.$add(
+          {
+            pronouns: Array.from(this.profile.pronouns),
+            identity: this.profile.identity,
+            sexuality: this.profile.sexuality,
+            expression: Array.from(this.profile.expression),
+            physical: Array.from(this.profile.physical),
+          }
+        );
       };
 
       this.sendMail = () => {

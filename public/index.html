@@ -805,12 +805,12 @@
 
         <div ng-if="ctrl.view != 'intro' && !ctrl.resultMessage && !ctrl.emailForm" class="flow-button restart-button"
             ng-click="ctrl.reset()" data-html2canvas-ignore>
-            Herstarten
+            Begin opnieuw
         </div>
 
         <div ng-if="(ctrl.view != 'result' && ctrl.profile.pronouns.size != 0 && ctrl.profile.identity.x && ctrl.profile.sexuality.x && ctrl.profile.expression.size != 0 && ctrl.profile.physical.size != 0)"
             class="flow-button submit-button"
-            ng-click="ctrl.setTitle(); ctrl.widget = null; ctrl.view = 'result'; ctrl.resultMessage = true">
+            ng-click="ctrl.setTitle(); ctrl.saveEntry(); ctrl.widget = null; ctrl.view = 'result'; ctrl.resultMessage = true">
             Klaar!
         </div>
 
@@ -873,6 +873,8 @@
 
     <script src="libs/html2canvas.min.js"></script>
     <script src="libs/angular.min.js"></script>
+    <script src="libs/firebase.min.js"></script>
+    <script src="libs/angularfire.min.js"></script>
     <script src="app.js"></script>
 
 </body>
