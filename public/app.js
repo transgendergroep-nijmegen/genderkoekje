@@ -129,6 +129,7 @@ angular
             sexuality: this.profile.sexuality,
             expression: Array.from(this.profile.expression),
             physical: Array.from(this.profile.physical),
+            timestamp: firebase.database.ServerValue.TIMESTAMP,
           }
         );
       };
